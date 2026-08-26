@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
+    <meta name="viewport"
+          content="width=device-width,
+          initial-scale=1.0,
+          viewport-fit=cover">
+
+    <title>LeoBattle</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="loadingScreen">
+
+        <div class="logo">🦁</div>
+
+        <h1>LEOBATTLE</h1>
+
+        <p>RISE • FIGHT • CONQUER</p>
+
+        <div class="loadingBox">
+            <div id="loadingBar"></div>
+        </div>
+
+        <div id="loadingText">
+            LOADING...
+        </div>
+
+        <small>VERSION 0.1</small>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
