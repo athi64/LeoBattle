@@ -2,69 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   maximum-scale=1.0, user-scalable=no">
+
     <title>LeoBattle</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="game">
+<div id="game">
 
-        <header class="top-bar">
+    <!-- LOADING SCREEN -->
+
+    <section id="loadingScreen" class="screen">
+
+        <div class="lion">🦁</div>
+
+        <h1>LEOBATTLE</h1>
+
+        <p>ENTER THE BATTLE</p>
+
+        <div class="loading-box">
+            <div id="loadingBar"></div>
+        </div>
+
+        <div id="loadingText">Loading 0%</div>
+
+    </section>
+
+
+    <!-- LOGIN SCREEN -->
+
+    <section id="loginScreen" class="screen hidden">
+
+        <div class="login-card">
+
+            <div class="small-logo">🦁</div>
+
+            <h1>LEOBATTLE</h1>
+
+            <p class="subtitle">
+                Create your legend
+            </p>
+
+            <button class="login-btn google"
+                    onclick="loginWithGoogle()">
+                🌐 Continue with Google
+            </button>
+
+            <button class="login-btn facebook"
+                    onclick="loginWithFacebook()">
+                f&nbsp;&nbsp; Continue with Facebook
+            </button>
+
+            <div class="or">
+                <span></span>
+                OR
+                <span></span>
+            </div>
+
+            <button class="guest-btn"
+                    onclick="continueAsGuest()">
+                🎮 Continue as Guest
+            </button>
+
+            <p class="login-note">
+                By continuing, you agree to LeoBattle terms.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOBBY -->
+
+    <section id="lobbyScreen" class="screen hidden">
+
+        <header class="top">
+
             <div class="logo">
-                🦁 <span>LeoBattle</span>
+                🦁 LeoBattle
             </div>
 
-            <div class="currency">
-                <div>💎 <span id="diamonds">500</span></div>
-                <div>🪙 <span id="gold">1000</span></div>
+            <div class="player">
+
+                <div>
+                    <b id="playerName">Guest</b>
+                    <small id="playerId">ID: 000000</small>
+                </div>
+
+                <div class="avatar">
+                    👤
+                </div>
+
             </div>
+
         </header>
+
 
         <main class="lobby">
 
-            <div class="welcome">
-                <p>WELCOME TO</p>
-                <h1>LEOBATTLE</h1>
-                <span>Enter the Battle. Create Your Legend.</span>
-            </div>
+            <div class="hero">
 
-            <div class="character-box">
-                <div class="character">
+                <p>WELCOME</p>
+
+                <h1 id="welcomeName">
+                    READY FOR BATTLE?
+                </h1>
+
+                <div class="character-preview">
                     🦁
                 </div>
 
-                <h2 id="characterName">Leo</h2>
-                <p>Level 1 • Rookie</p>
+                <h2>LEO</h2>
 
-                <button onclick="createCharacter()">
-                    👤 CREATE CHARACTER
+                <button class="start-btn"
+                        onclick="startBattle()">
+                    ⚔️ START BATTLE
                 </button>
+
             </div>
 
-            <button class="start-button" onclick="startBattle()">
-                ⚔️ START BATTLE
-            </button>
 
-            <div class="menu">
+            <div class="quick-menu">
 
-                <button onclick="openPage('characters')">
-                    👥
-                    <span>Characters</span>
+                <button onclick="openMenu('character')">
+                    👤
+                    <span>Character</span>
                 </button>
 
-                <button onclick="openPage('weapons')">
+                <button onclick="openMenu('weapons')">
                     🔫
                     <span>Weapons</span>
                 </button>
 
-                <button onclick="openPage('maps')">
+                <button onclick="openMenu('maps')">
                     🗺️
                     <span>Maps</span>
                 </button>
 
-                <button onclick="openPage('settings')">
+                <button onclick="openMenu('inventory')">
+                    🎒
+                    <span>Inventory</span>
+                </button>
+
+                <button onclick="openMenu('settings')">
                     ⚙️
                     <span>Settings</span>
                 </button>
@@ -73,14 +159,16 @@
 
         </main>
 
+
         <footer>
-            <span>LeoBattle</span>
-            <span>Version 1.0</span>
+            💎 500 &nbsp;&nbsp; 🪙 1000
         </footer>
 
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
