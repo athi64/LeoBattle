@@ -1,1074 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport"
-          content="width=device-width,
-                   initial-scale=1.0,
-                   maximum-scale=1.0,
-                   user-scalable=no">
+          content="width=device-width, initial-scale=1.0,
+          maximum-scale=1.0, user-scalable=no">
 
     <title>LeoBattle</title>
-
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="rotateScreen">
-    <div class="rotate-icon">↻</div>
-    <h2>ROTATE YOUR PHONE</h2>
-    <p>LeoBattle is designed for landscape mode</p>
-</div>
-
-
 <div id="game">
 
+    <!-- FIRST LOADING -->
+    <section id="firstLoading" class="page active">
+        <div class="loading-screen">
 
-<!-- =========================================
-     FIRST LOADING
-========================================= -->
+            <div class="lion">🦁</div>
 
-<section id="splash" class="screen active">
+            <h1>LEOBATTLE</h1>
 
-    <div class="splash-content">
+            <p>RISE • FIGHT • CONQUER</p>
 
-        <div class="lion-big">🦁</div>
-
-        <h1>LEOBATTLE</h1>
-
-        <div class="tagline">
-            RISE • FIGHT • CONQUER
-        </div>
-
-        <div class="loading-box">
-
-            <div class="loading-track">
+            <div class="loading-box">
                 <div id="firstBar"></div>
             </div>
 
             <div id="firstPercent">0%</div>
 
+            <small id="firstStatus">
+                INITIALIZING BATTLE SYSTEM...
+            </small>
+
         </div>
-
-        <p id="firstText">
-            INITIALIZING BATTLE SYSTEM...
-        </p>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- =========================================
-     AUTH
-========================================= -->
+    <!-- LOGIN -->
+    <section id="loginPage" class="page">
 
-<section id="auth" class="screen">
+        <div class="login-screen">
 
-    <div class="auth-box">
+            <div class="lion small">🦁</div>
 
-        <div class="mini-lion">🦁</div>
+            <h1>LEOBATTLE</h1>
+            <p>CREATE YOUR LEGEND</p>
 
-        <h1>LEOBATTLE</h1>
-
-        <p class="auth-title">
-            CREATE YOUR LEGEND
-        </p>
-
-
-        <div class="auth-tabs">
-
-            <button id="signInTab"
-                    class="tab active"
-                    onclick="showAuth('signin')">
-                SIGN IN
+            <button onclick="loginGoogle()" class="login-btn google">
+                🌐 CONTINUE WITH GOOGLE
             </button>
 
-            <button id="signUpTab"
-                    class="tab"
-                    onclick="showAuth('signup')">
-                SIGN UP
+            <button onclick="loginFacebook()" class="login-btn facebook">
+                f &nbsp; CONTINUE WITH FACEBOOK
+            </button>
+
+            <div class="or">OR</div>
+
+            <button onclick="loginGuest()" class="login-btn guest">
+                🎮 CONTINUE AS GUEST
+            </button>
+
+            <button onclick="openSignup()" class="signup">
+                CREATE NEW ACCOUNT
             </button>
 
         </div>
 
+    </section>
 
-        <!-- SIGN IN -->
 
-        <div id="signinForm">
+    <!-- SECOND LOADING -->
+    <section id="secondLoading" class="page">
 
-            <input id="loginEmail"
-                   type="email"
-                   placeholder="EMAIL">
+        <div class="loading-screen">
 
-            <input id="loginPassword"
-                   type="password"
-                   placeholder="PASSWORD">
-
-            <button class="main-auth-btn"
-                    onclick="emailLogin()">
-                SIGN IN
-            </button>
-
-        </div>
-
-
-        <!-- SIGN UP -->
-
-        <div id="signupForm" class="hidden">
-
-            <input id="signupName"
-                   type="text"
-                   placeholder="PLAYER NAME">
-
-            <input id="signupEmail"
-                   type="email"
-                   placeholder="EMAIL">
-
-            <input id="signupPassword"
-                   type="password"
-                   placeholder="PASSWORD">
-
-            <button class="main-auth-btn"
-                    onclick="emailSignup()">
-                CREATE ACCOUNT
-            </button>
-
-        </div>
-
-
-        <div class="or-line">
-            <span></span>
-            OR
-            <span></span>
-        </div>
-
-
-        <button class="google-btn"
-                onclick="socialLogin('Google')">
-            <b>G</b>
-            CONTINUE WITH GOOGLE
-        </button>
-
-
-        <button class="facebook-btn"
-                onclick="socialLogin('Facebook')">
-            <b>f</b>
-            CONTINUE WITH FACEBOOK
-        </button>
-
-
-        <button class="guest-btn"
-                onclick="guestLogin()">
-            🎮 CONTINUE AS GUEST
-        </button>
-
-
-        <p id="authMessage"></p>
-
-        <small class="terms">
-            LeoBattle prototype • Your progress is saved on this device
-        </small>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SECOND LOADING
-========================================= -->
-
-<section id="loading2" class="screen">
-
-    <div class="second-loading">
-
-        <div class="lion-orbit">
-            🦁
-        </div>
-
-        <h1>LEOBATTLE</h1>
-
-        <div class="loading-track">
-            <div id="secondBar"></div>
-        </div>
-
-        <div id="secondPercent">
-            0%
-        </div>
-
-        <p id="secondText">
-            CONNECTING PLAYER...
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     LOBBY
-========================================= -->
-
-<section id="lobby" class="screen lobby-screen">
-
-
-    <!-- TOP BAR -->
-
-    <header class="topbar">
-
-        <div class="brand">
-            🦁 <span>LEOBATTLE</span>
-        </div>
-
-
-        <div class="player-top">
-
-            <div>
-                <b id="topPlayerName">GUEST</b>
-                <small id="topPlayerId">
-                    ID: 000000
-                </small>
-            </div>
-
-            <img id="topAvatar"
-                 class="top-avatar"
-                 src=""
-                 alt="">
-
-            <div id="defaultAvatar"
-                 class="default-avatar">
-                👤
-            </div>
-
-        </div>
-
-
-        <div class="currency">
-
-            <div class="diamond">
-                ◆ <span id="diamond">500</span>
-            </div>
-
-            <div class="gold">
-                🪙 <span id="gold">1000</span>
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- LOBBY CONTENT -->
-
-    <main class="lobby-content">
-
-
-        <!-- CHARACTER -->
-
-        <div class="hero-area">
-
-            <div id="heroCharacter"
-                 class="hero-character">
+            <div class="lion-ring">
                 🦁
             </div>
 
-            <h2 id="heroName">
-                LEO
-            </h2>
+            <h1>LEOBATTLE</h1>
 
-            <div class="level-text">
-                LEVEL <span id="level">1</span>
+            <p>ENTERING BATTLEFIELD</p>
+
+            <div class="loading-box">
+                <div id="secondBar"></div>
             </div>
 
-            <div class="xp-track">
-                <div id="xpBar"></div>
-            </div>
+            <div id="secondPercent">0%</div>
+
+            <small id="secondStatus">
+                CONNECTING PLAYER...
+            </small>
 
         </div>
 
-
-        <!-- MENU -->
-
-        <div class="main-menu">
-
-            <button onclick="openPanel('character')">
-                <span>👤</span>
-                CHARACTER
-            </button>
-
-            <button onclick="openPanel('weapons')">
-                <span>🔫</span>
-                WEAPONS
-            </button>
-
-            <button onclick="openPanel('maps')">
-                <span>🗺️</span>
-                MAPS
-            </button>
-
-            <button onclick="openPanel('missions')">
-                <span>🎯</span>
-                MISSIONS
-            </button>
-
-            <button onclick="openPanel('inventory')">
-                <span>🎒</span>
-                INVENTORY
-            </button>
-
-            <button onclick="openPanel('shop')">
-                <span>🛒</span>
-                SHOP
-            </button>
-
-            <button onclick="openPanel('rewards')">
-                <span>🎁</span>
-                REWARDS
-            </button>
-
-            <button onclick="openPanel('settings')">
-                <span>⚙️</span>
-                SETTINGS
-            </button>
-
-        </div>
+    </section>
 
 
-        <!-- BATTLE CARD -->
+    <!-- LOBBY -->
+    <section id="lobby" class="page">
 
-        <div class="battle-card">
+        <header>
 
-            <div class="small-label">
-                SELECTED MODE
+            <div class="logo">
+                🦁 LEOBATTLE
             </div>
 
-            <h2 id="selectedMode">
-                CLASSIC
-            </h2>
-
-            <div id="selectedMap">
-                RANDOM MAP
+            <div class="currency">
+                <span class="diamond">◆ <b id="diamondValue">500</b></span>
+                <span class="gold">● <b id="goldValue">1000</b></span>
             </div>
 
-
-            <div class="mode-row">
-
-                <button onclick="selectMode('CLASSIC')">
-                    CLASSIC
-                </button>
-
-                <button onclick="selectMode('MILITARY')">
-                    MILITARY
-                </button>
-
-                <button onclick="selectMode('TRAINING')">
-                    TRAINING
-                </button>
-
+            <div class="player">
+                👤
+                <span id="playerName">Guest</span>
+                <small id="playerId">ID: 000000</small>
             </div>
 
-
-            <button class="start-btn"
-                    onclick="startBattle()">
-
-                START
-
-                <small>
-                    DROP INTO BATTLE
-                </small>
-
-            </button>
-
-        </div>
-
-    </main>
+        </header>
 
 
-    <!-- BOTTOM NAV -->
+        <main>
 
-    <nav class="bottom-nav">
+            <div class="character">
 
-        <button onclick="openPanel('profile')">
-            👤 PROFILE
-        </button>
-
-        <button onclick="openPanel('character')">
-            🧑 CHARACTER
-        </button>
-
-        <button onclick="openPanel('maps')">
-            🌍 WORLD
-        </button>
-
-        <button onclick="openPanel('shop')">
-            🛒 SHOP
-        </button>
-
-    </nav>
-
-</section>
-
-
-<!-- =========================================
-     CHARACTER PANEL
-========================================= -->
-
-<section id="characterPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>CHARACTER</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-
-        <div class="character-layout">
-
-            <div class="photo-character">
-
-                <div id="characterPreview"
-                     class="character-preview">
+                <div class="character-image">
                     🦁
                 </div>
 
-                <h2 id="characterName">
-                    LEO
-                </h2>
+                <h2>LEO</h2>
+                <p>LEVEL 1</p>
 
-                <p>
-                    YOUR CUSTOM CHARACTER
-                </p>
+            </div>
 
-                <label class="upload-btn">
 
-                    📸 UPLOAD PHOTO
+            <div class="battle">
 
-                    <input type="file"
-                           id="photoInput"
-                           accept="image/*"
-                           onchange="uploadCharacterPhoto(event)">
+                <span>BATTLE MODE</span>
+                <h1>CLASSIC</h1>
+                <p>RANDOM MAP</p>
 
-                </label>
-
-                <button class="gold-action"
-                        onclick="toggleCartoon()">
-                    🎨 CARTOON STYLE
+                <button onclick="startBattle()" class="start">
+                    ⚔ START
+                    <small>DROP INTO BATTLE</small>
                 </button>
 
             </div>
 
 
-            <div class="character-list">
+            <div class="menu">
 
-                <h3>CHARACTERS</h3>
-
-                <button onclick="selectCharacter('LEO','🦁')">
-                    🦁 LEO
+                <button onclick="openFeature('CHARACTER')">
+                    👤<span>CHARACTER</span>
                 </button>
 
-                <button onclick="selectCharacter('KAIRO','⚡')">
-                    ⚡ KAIRO
+                <button onclick="openFeature('WEAPONS')">
+                    🔫<span>WEAPONS</span>
                 </button>
 
-                <button onclick="selectCharacter('RYDEN','🔥')">
-                    🔥 RYDEN
+                <button onclick="openFeature('MAPS')">
+                    🗺️<span>MAPS</span>
                 </button>
 
-                <button onclick="selectCharacter('NAIRO','🌑')">
-                    🌑 NAIRO
+                <button onclick="openFeature('MISSIONS')">
+                    🎯<span>MISSIONS</span>
                 </button>
 
-                <button onclick="selectCharacter('ZAYVEN','👑')">
-                    👑 ZAYVEN
+                <button onclick="openFeature('INVENTORY')">
+                    🎒<span>INVENTORY</span>
                 </button>
 
-                <button onclick="selectCharacter('JD','🎮')">
-                    🎮 JD
-                </button>
-
-                <button onclick="selectCharacter('JOSEPH','⚔️')">
-                    ⚔️ JOSEPH
-                </button>
-
-                <button onclick="selectCharacter('THALAPATHY','🔥')">
-                    🔥 THALAPATHY
-                </button>
-
-                <button onclick="selectCharacter('VETRI','💫')">
-                    💫 VETRI
-                </button>
-
-                <button onclick="selectCharacter('DAS','🥷')">
-                    🥷 DAS
+                <button onclick="openFeature('SETTINGS')">
+                    ⚙️<span>SETTINGS</span>
                 </button>
 
             </div>
 
-        </div>
+        </main>
 
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     WEAPONS
-========================================= -->
-
-<section id="weaponsPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>WEAPONS</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="item-grid">
-
-            <div class="game-card selected-card">
-                🔫
-                <h3>RAVEN AR-1</h3>
-                <p>ASSAULT RIFLE</p>
-                <b>EQUIPPED</b>
-            </div>
-
-            <div class="game-card">
-                🔥
-                <h3>FURY SMG</h3>
-                <p>FAST FIRE</p>
-                <button onclick="buyItem('FURY SMG',200)">
-                    🪙 200
-                </button>
-            </div>
-
-            <div class="game-card">
-                🎯
-                <h3>VORTEX DMR</h3>
-                <p>LONG RANGE</p>
-                <button onclick="buyItem('VORTEX DMR',350)">
-                    🪙 350
-                </button>
-            </div>
-
-            <div class="game-card">
-                💥
-                <h3>BLAST-9</h3>
-                <p>HEAVY WEAPON</p>
-                <button onclick="buyItem('BLAST-9',500)">
-                    💎 100
-                </button>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     MAPS
-========================================= -->
-
-<section id="mapsPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>MAP WORLD</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="map-grid">
-
-            <button onclick="selectMap('LEOWORLD')">
-                <span>🌍</span>
-                <b>LEOWORLD</b>
-                <small>MAIN WORLD</small>
-            </button>
-
-            <button onclick="selectMap('CHOCOLATE WORLD')">
-                <span>🍫</span>
-                <b>CHOCOLATE WORLD</b>
-                <small>SPECIAL WORLD</small>
-            </button>
-
-            <button onclick="selectMap('DESERT FRONT')">
-                <span>🏜️</span>
-                <b>DESERT FRONT</b>
-                <small>OPEN TERRAIN</small>
-            </button>
-
-            <button onclick="selectMap('FROZEN PEAK')">
-                <span>🏔️</span>
-                <b>FROZEN PEAK</b>
-                <small>SNOW MAP</small>
-            </button>
-
-            <button onclick="selectMap('CITY STRIKE')">
-                <span>🏙️</span>
-                <b>CITY STRIKE</b>
-                <small>URBAN MAP</small>
-            </button>
-
-            <button onclick="selectMap('JUNGLE ZONE')">
-                <span>🌴</span>
-                <b>JUNGLE ZONE</b>
-                <small>FOREST MAP</small>
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     MISSIONS
-========================================= -->
-
-<section id="missionsPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>MISSIONS</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="mission-list">
-
-            <div class="mission">
-                <div>
-                    <b>FIRST DROP</b>
-                    <p>Enter your first battle</p>
-                </div>
-                <span>+100 XP</span>
-            </div>
-
-            <div class="mission">
-                <div>
-                    <b>EXPLORER</b>
-                    <p>Visit 3 different maps</p>
-                </div>
-                <span>+200 XP</span>
-            </div>
-
-            <div class="mission">
-                <div>
-                    <b>WEAPON MASTER</b>
-                    <p>Collect 3 weapons</p>
-                </div>
-                <span>+250 XP</span>
-            </div>
-
-            <div class="mission">
-                <div>
-                    <b>LEGEND RISES</b>
-                    <p>Reach Level 5</p>
-                </div>
-                <span>+500 XP</span>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     INVENTORY
-========================================= -->
-
-<section id="inventoryPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>INVENTORY</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div id="inventoryGrid"
-             class="item-grid">
-
-            <div class="game-card">
-                🎒
-                <h3>STARTER PACK</h3>
-                <p>BASIC EQUIPMENT</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SHOP
-========================================= -->
-
-<section id="shopPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>LEOBATTLE SHOP</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="shop-grid">
-
-            <div class="shop-card">
-
-                <div>💎</div>
-
-                <h3>500 DIAMONDS</h3>
-
-                <p>PREMIUM CURRENCY</p>
-
-                <button onclick="buyItem('500 DIAMONDS',0)">
-                    FREE DEMO
-                </button>
-
-            </div>
-
-
-            <div class="shop-card">
-
-                <div>👕</div>
-
-                <h3>SHADOW OUTFIT</h3>
-
-                <p>CHARACTER SKIN</p>
-
-                <button onclick="buyItem('SHADOW OUTFIT',250)">
-                    🪙 250
-                </button>
-
-            </div>
-
-
-            <div class="shop-card">
-
-                <div>🎒</div>
-
-                <h3>TACTICAL BAG</h3>
-
-                <p>INVENTORY SKIN</p>
-
-                <button onclick="buyItem('TACTICAL BAG',300)">
-                    🪙 300
-                </button>
-
-            </div>
-
-
-            <div class="shop-card">
-
-                <div>🪂</div>
-
-                <h3>SKY WING</h3>
-
-                <p>PARACHUTE SKIN</p>
-
-                <button onclick="buyItem('SKY WING',150)">
-                    💎 150
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     REWARDS
-========================================= -->
-
-<section id="rewardsPanel"
-         class="screen panel-screen">
-
-    <div class="panel reward-panel">
-
-        <div class="panel-header">
-
-            <h1>DAILY REWARD</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="reward-box">
-
-            <div>🎁</div>
-
-            <h2>DAILY DROP</h2>
-
-            <p>Claim your free reward</p>
-
-            <button class="start-btn"
-                    onclick="claimReward()">
-                CLAIM REWARD
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     PROFILE
-========================================= -->
-
-<section id="profilePanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>PROFILE</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="profile-layout">
-
-            <div id="profileAvatar"
-                 class="profile-avatar">
-                👤
-            </div>
-
-            <h2 id="profileName">
-                GUEST
-            </h2>
-
-            <p id="profileID">
-                ID: 000000
-            </p>
-
-            <div class="stats">
-
-                <div>
-                    <b id="statLevel">1</b>
-                    <span>LEVEL</span>
-                </div>
-
-                <div>
-                    <b id="statXP">0</b>
-                    <span>XP</span>
-                </div>
-
-                <div>
-                    <b id="statWins">0</b>
-                    <span>WINS</span>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     SETTINGS
-========================================= -->
-
-<section id="settingsPanel"
-         class="screen panel-screen">
-
-    <div class="panel">
-
-        <div class="panel-header">
-
-            <h1>SETTINGS</h1>
-
-            <button onclick="closePanels()">✕</button>
-
-        </div>
-
-        <div class="settings-list">
-
-            <button onclick="toggleSound()">
-                🔊 SOUND
-                <span id="soundStatus">ON</span>
-            </button>
-
-            <button onclick="toggleEffects()">
-                ✨ EFFECTS
-                <span id="effectsStatus">ON</span>
-            </button>
-
-            <button onclick="resetProgress()">
-                ♻️ RESET LOCAL PROGRESS
-            </button>
-
-            <button onclick="logout()">
-                🚪 LOG OUT
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     BATTLE / DROP
-========================================= -->
-
-<section id="battleScreen"
-         class="screen battle-screen">
-
-    <div class="battle-world">
-
-        <div class="sky">
-
-            <div class="battle-title">
-                LEOBATTLE
-            </div>
-
-            <div class="plane">
-                ✈️
-            </div>
-
-            <div class="drop-player">
-                🪂
-            </div>
-
-        </div>
-
-
-        <div class="battle-hud">
-
-            <div class="hud-left">
-
-                <b id="battleMode">
-                    CLASSIC
-                </b>
-
-                <span id="battleMap">
-                    LEOWORLD
-                </span>
-
-            </div>
-
-
-            <div class="hud-center">
-                DROP ZONE
-            </div>
-
-
-            <button onclick="landPlayer()">
-                DROP
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     LANDING / LOOT
-========================================= -->
-
-<section id="lootScreen"
-         class="screen battle-screen">
-
-    <div class="loot-world">
-
-        <div class="loot-title">
-            ⚔️ BATTLE STARTED
-        </div>
-
-        <div class="player-ground">
-            🧑
-        </div>
-
-        <div class="loot-box">
-
-            <h2>DEATH BOX</h2>
-
-            <p>LOOT AVAILABLE</p>
-
-            <button onclick="collectLoot()">
-                📦 COLLECT LOOT
-            </button>
-
-        </div>
-
-
-        <div class="battle-actions">
-
-            <button onclick="useVehicle()">
-                🚗 VEHICLE
-            </button>
-
-            <button onclick="showBattleMessage()">
-                🔫 WEAPON
-            </button>
-
-            <button onclick="leaveBattle()">
-                🚪 EXIT
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
+    </section>
 
 </div>
 
-
-<script src="./script.js"></script>
+<script src="script.js"></script>
 
 </body>
-            </html>
+    </html>
