@@ -2,36 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width,
-          initial-scale=1.0,
-          viewport-fit=cover">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LeoBattle</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div id="loadingScreen">
+    <div class="game">
 
-        <div class="logo">🦁</div>
+        <header class="top-bar">
+            <div class="logo">
+                🦁 <span>LeoBattle</span>
+            </div>
 
-        <h1>LEOBATTLE</h1>
+            <div class="currency">
+                <div>💎 <span id="diamonds">500</span></div>
+                <div>🪙 <span id="gold">1000</span></div>
+            </div>
+        </header>
 
-        <p>RISE • FIGHT • CONQUER</p>
+        <main class="lobby">
 
-        <div class="loadingBox">
-            <div id="loadingBar"></div>
-        </div>
+            <div class="welcome">
+                <p>WELCOME TO</p>
+                <h1>LEOBATTLE</h1>
+                <span>Enter the Battle. Create Your Legend.</span>
+            </div>
 
-        <div id="loadingText">
-            LOADING...
-        </div>
+            <div class="character-box">
+                <div class="character">
+                    🦁
+                </div>
 
-        <small>VERSION 0.1</small>
+                <h2 id="characterName">Leo</h2>
+                <p>Level 1 • Rookie</p>
+
+                <button onclick="createCharacter()">
+                    👤 CREATE CHARACTER
+                </button>
+            </div>
+
+            <button class="start-button" onclick="startBattle()">
+                ⚔️ START BATTLE
+            </button>
+
+            <div class="menu">
+
+                <button onclick="openPage('characters')">
+                    👥
+                    <span>Characters</span>
+                </button>
+
+                <button onclick="openPage('weapons')">
+                    🔫
+                    <span>Weapons</span>
+                </button>
+
+                <button onclick="openPage('maps')">
+                    🗺️
+                    <span>Maps</span>
+                </button>
+
+                <button onclick="openPage('settings')">
+                    ⚙️
+                    <span>Settings</span>
+                </button>
+
+            </div>
+
+        </main>
+
+        <footer>
+            <span>LeoBattle</span>
+            <span>Version 1.0</span>
+        </footer>
 
     </div>
 
