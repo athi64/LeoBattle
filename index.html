@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0,
-                   maximum-scale=1.0, user-scalable=no">
+          maximum-scale=1.0, user-scalable=no">
 
     <title>LeoBattle</title>
 
@@ -13,162 +13,226 @@
 
 <body>
 
-<div id="game">
+    <div id="game">
 
-    <!-- LOADING SCREEN -->
+        <!-- FIRST LOADING -->
+        <section id="firstLoading" class="page active">
 
-    <section id="loadingScreen" class="screen">
+            <div class="loading-content">
 
-        <div class="lion">🦁</div>
-
-        <h1>LEOBATTLE</h1>
-
-        <p>ENTER THE BATTLE</p>
-
-        <div class="loading-box">
-            <div id="loadingBar"></div>
-        </div>
-
-        <div id="loadingText">Loading 0%</div>
-
-    </section>
-
-
-    <!-- LOGIN SCREEN -->
-
-    <section id="loginScreen" class="screen hidden">
-
-        <div class="login-card">
-
-            <div class="small-logo">🦁</div>
-
-            <h1>LEOBATTLE</h1>
-
-            <p class="subtitle">
-                Create your legend
-            </p>
-
-            <button class="login-btn google"
-                    onclick="loginWithGoogle()">
-                🌐 Continue with Google
-            </button>
-
-            <button class="login-btn facebook"
-                    onclick="loginWithFacebook()">
-                f&nbsp;&nbsp; Continue with Facebook
-            </button>
-
-            <div class="or">
-                <span></span>
-                OR
-                <span></span>
-            </div>
-
-            <button class="guest-btn"
-                    onclick="continueAsGuest()">
-                🎮 Continue as Guest
-            </button>
-
-            <p class="login-note">
-                By continuing, you agree to LeoBattle terms.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- LOBBY -->
-
-    <section id="lobbyScreen" class="screen hidden">
-
-        <header class="top">
-
-            <div class="logo">
-                🦁 LeoBattle
-            </div>
-
-            <div class="player">
-
-                <div>
-                    <b id="playerName">Guest</b>
-                    <small id="playerId">ID: 000000</small>
-                </div>
-
-                <div class="avatar">
-                    👤
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <main class="lobby">
-
-            <div class="hero">
-
-                <p>WELCOME</p>
-
-                <h1 id="welcomeName">
-                    READY FOR BATTLE?
-                </h1>
-
-                <div class="character-preview">
+                <div class="lion-logo">
                     🦁
                 </div>
 
-                <h2>LEO</h2>
+                <h1>LEOBATTLE</h1>
 
-                <button class="start-btn"
-                        onclick="startBattle()">
-                    ⚔️ START BATTLE
-                </button>
+                <p class="loading-subtitle">
+                    RISE • FIGHT • CONQUER
+                </p>
 
-            </div>
+                <div class="loading-bar">
+                    <div id="firstBar"></div>
+                </div>
 
+                <div id="firstPercent">0%</div>
 
-            <div class="quick-menu">
-
-                <button onclick="openMenu('character')">
-                    👤
-                    <span>Character</span>
-                </button>
-
-                <button onclick="openMenu('weapons')">
-                    🔫
-                    <span>Weapons</span>
-                </button>
-
-                <button onclick="openMenu('maps')">
-                    🗺️
-                    <span>Maps</span>
-                </button>
-
-                <button onclick="openMenu('inventory')">
-                    🎒
-                    <span>Inventory</span>
-                </button>
-
-                <button onclick="openMenu('settings')">
-                    ⚙️
-                    <span>Settings</span>
-                </button>
+                <p id="firstStatus">
+                    INITIALIZING BATTLE SYSTEM...
+                </p>
 
             </div>
 
-        </main>
+        </section>
 
 
-        <footer>
-            💎 500 &nbsp;&nbsp; 🪙 1000
-        </footer>
+        <!-- LOGIN -->
+        <section id="loginPage" class="page">
 
-    </section>
+            <div class="login-container">
 
-</div>
+                <div class="login-logo">
+                    🦁
+                </div>
 
-<script src="./script.js"></script>
+                <h1>LEOBATTLE</h1>
+
+                <p>CREATE YOUR LEGEND</p>
+
+                <button class="google-btn"
+                        onclick="loginGoogle()">
+                    <span>G</span>
+                    CONTINUE WITH GOOGLE
+                </button>
+
+                <button class="facebook-btn"
+                        onclick="loginFacebook()">
+                    <span>f</span>
+                    CONTINUE WITH FACEBOOK
+                </button>
+
+                <div class="divider">
+                    <span></span>
+                    OR
+                    <span></span>
+                </div>
+
+                <button class="guest-btn"
+                        onclick="loginGuest()">
+                    🎮 CONTINUE AS GUEST
+                </button>
+
+                <button class="signup-btn"
+                        onclick="openSignup()">
+                    CREATE NEW ACCOUNT
+                </button>
+
+                <p class="terms">
+                    By continuing, you agree to LeoBattle Terms.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECOND LOADING -->
+        <section id="secondLoading" class="page">
+
+            <div class="second-loading">
+
+                <div class="lion-ring">
+                    🦁
+                </div>
+
+                <h1>LEOBATTLE</h1>
+
+                <div class="loading-bar">
+                    <div id="secondBar"></div>
+                </div>
+
+                <div id="secondPercent">0%</div>
+
+                <p id="secondStatus">
+                    PREPARING BATTLEFIELD...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MAIN LOBBY -->
+        <section id="lobby" class="page">
+
+            <header class="top-bar">
+
+                <div class="brand">
+                    🦁 <b>LEOBATTLE</b>
+                </div>
+
+                <div class="player-info">
+
+                    <div>
+                        <b id="playerName">Guest</b>
+                        <small id="playerId">
+                            ID: 000000
+                        </small>
+                    </div>
+
+                    <div class="avatar">
+                        👤
+                    </div>
+
+                </div>
+
+                <div class="currency">
+
+                    <div class="diamond">
+                        ◆ <span id="diamondValue">500</span>
+                    </div>
+
+                    <div class="gold">
+                        🪙 <span id="goldValue">1000</span>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <main class="lobby-main">
+
+                <div class="character-area">
+
+                    <div class="character-placeholder">
+                        🦁
+                    </div>
+
+                    <h2>LEO</h2>
+
+                    <p>LEVEL 1</p>
+
+                </div>
+
+
+                <div class="lobby-menu">
+
+                    <button onclick="openFeature('CHARACTER')">
+                        👤
+                        <span>CHARACTER</span>
+                    </button>
+
+                    <button onclick="openFeature('WEAPONS')">
+                        🔫
+                        <span>WEAPONS</span>
+                    </button>
+
+                    <button onclick="openFeature('MAPS')">
+                        🗺️
+                        <span>MAPS</span>
+                    </button>
+
+                    <button onclick="openFeature('MISSIONS')">
+                        🎯
+                        <span>MISSIONS</span>
+                    </button>
+
+                    <button onclick="openFeature('INVENTORY')">
+                        🎒
+                        <span>INVENTORY</span>
+                    </button>
+
+                    <button onclick="openFeature('SETTINGS')">
+                        ⚙️
+                        <span>SETTINGS</span>
+                    </button>
+
+                </div>
+
+
+                <div class="battle-panel">
+
+                    <p>BATTLE MODE</p>
+
+                    <h2>CLASSIC</h2>
+
+                    <span>RANDOM MAP</span>
+
+                    <button class="start-button"
+                            onclick="startBattle()">
+                        START
+                        <small>DROP INTO BATTLE</small>
+                    </button>
+
+                </div>
+
+            </main>
+
+        </section>
+
+    </div>
+
+    <script src="./script.js"></script>
 
 </body>
-</html>
+                </html>
