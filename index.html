@@ -232,7 +232,161 @@
 
     </div>
 
-    <script src="./script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const pages = document.querySelectorAll(".page");
+
+    function showPage(id) {
+        pages.forEach(function(page) {
+            page.classList.remove("active");
+        });
+
+        document.getElementById(id).classList.add("active");
+    }
+
+    // FIRST LOADING
+    let progress = 0;
+
+    const firstBar = document.getElementById("firstBar");
+    const firstPercent = document.getElementById("firstPercent");
+    const firstStatus = document.getElementById("firstStatus");
+
+    const firstTimer = setInterval(function() {
+
+        progress += 2;
+
+        firstBar.style.width = progress + "%";
+        firstPercent.textContent = progress + "%";
+
+        if (progress < 30) {
+            firstStatus.textContent = "STARTING LEOBATTLE...";
+        } else if (progress < 60) {
+            firstStatus.textContent = "LOADING GAME SYSTEM...";
+        } else if (progress < 85) {
+            firstStatus.textContent = "AWAKENING THE BATTLE...";
+        } else {
+            firstStatus.textContent = "PREPARING YOUR JOURNEY...";
+        }
+
+        if (progress >= 100) {
+
+            clearInterval(firstTimer);
+
+            firstStatus.textContent = "LEOBATTLE READY";
+
+            setTimeout(function() {
+                showPage("loginPage");
+            }, 800);
+        }
+
+    }, 60);
+
+
+    // GOOGLE
+    window.loginGoogle = function() {
+        startSecondLoading("Google Player");
+    };
+
+
+    // FACEBOOK
+    window.loginFacebook = function() {
+        startSecondLoading("Facebook Player");
+    };
+
+
+    // GUEST
+    window.loginGuest = function() {
+
+        const id = Math.floor(
+            100000 + Math.random() * 900000
+        );
+
+        document.getElementById("playerName").textContent =
+            "Guest_" + id;
+
+        document.getElementById("playerId").textContent =
+            "ID: " + id;
+
+        startSecondLoading("Guest_" + id);
+    };
+
+
+    // SIGN UP
+    window.openSignup = function() {
+        alert("LeoBattle Sign Up will be connected next.");
+    };
+
+
+    // SECOND LOADING
+    function startSecondLoading(playerName) {
+
+        showPage("secondLoading");
+
+        let progress2 = 0;
+
+        const secondBar =
+            document.getElementById("secondBar");
+
+        const secondPercent =
+            document.getElementById("secondPercent");
+
+        const secondStatus =
+            document.getElementById("secondStatus");
+
+        const timer = setInterval(function() {
+
+            progress2 += 2;
+
+            secondBar.style.width =
+                progress2 + "%";
+
+            secondPercent.textContent =
+                progress2 + "%";
+
+            if (progress2 < 30) {
+                secondStatus.textContent =
+                    "CONNECTING PLAYER...";
+            } else if (progress2 < 60) {
+                secondStatus.textContent =
+                    "LOADING PLAYER DATA...";
+            } else if (progress2 < 85) {
+                secondStatus.textContent =
+                    "PREPARING BATTLEFIELD...";
+            } else {
+                secondStatus.textContent =
+                    "ENTERING LEOBATTLE...";
+            }
+
+            if (progress2 >= 100) {
+
+                clearInterval(timer);
+
+                document.getElementById("welcomeName")
+                    .textContent =
+                    "WELCOME " + playerName.toUpperCase();
+
+                setTimeout(function() {
+                    showPage("lobby");
+                }, 800);
+            }
+
+        }, 60);
+    }
+
+
+    // LOBBY
+    window.openFeature = function(feature) {
+        alert(feature + " — Coming Soon 🔥");
+    };
+
+
+    window.startBattle = function() {
+        alert("Battle system will be added next.");
+    };
+
+});
+                          </script>
 
 </body>
                 </html>
