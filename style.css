@@ -2,188 +2,387 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
+html,
 body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
-    background: #080b12;
+    background: #05070b;
     color: white;
-    min-height: 100vh;
 }
 
-.game {
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+/* GAME */
+
+#game {
+    width: 100vw;
+    height: 100vh;
     min-height: 100vh;
-    max-width: 480px;
-    margin: auto;
-    background: linear-gradient(180deg, #111827, #05070b);
+    background:
+        radial-gradient(circle at 50% 35%, #26334b 0%, #101722 38%, #05070b 80%);
     position: relative;
     overflow: hidden;
 }
 
-/* TOP BAR */
+/* ALL SCREENS */
 
-.top-bar {
-    height: 70px;
-    padding: 15px;
+.screen {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+#loadingScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle, #182338 0%, #080b12 60%, #030407 100%);
+}
+
+.lion {
+    font-size: clamp(70px, 13vw, 120px);
+    margin-bottom: 5px;
+    animation: pulse 1.3s infinite;
+}
+
+#loadingScreen h1 {
+    font-size: clamp(32px, 6vw, 60px);
+    letter-spacing: 6px;
+    font-weight: 900;
+}
+
+#loadingScreen p {
+    margin-top: 8px;
+    letter-spacing: 4px;
+    font-size: 12px;
+    opacity: .65;
+}
+
+.loading-box {
+    width: min(420px, 60vw);
+    height: 8px;
+    background: #202a3b;
+    border-radius: 20px;
+    margin-top: 35px;
+    overflow: hidden;
+}
+
+#loadingBar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #ff7a00, #ffd000);
+    border-radius: 20px;
+    transition: width .15s linear;
+}
+
+#loadingText {
+    margin-top: 12px;
+    font-size: 12px;
+    opacity: .65;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+        radial-gradient(circle at center, #1c2a40, #070a10 70%);
+}
+
+.login-card {
+    width: min(440px, 90vw);
+    padding: 30px;
+    text-align: center;
+    background: rgba(13, 19, 30, .94);
+    border: 1px solid #33435c;
+    border-radius: 22px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.55);
+}
+
+.small-logo {
+    font-size: 42px;
+}
+
+.login-card h1 {
+    font-size: 30px;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+.subtitle {
+    opacity: .6;
+    font-size: 13px;
+    margin: 7px 0 22px;
+}
+
+.login-btn,
+.guest-btn {
+    width: 100%;
+    height: 48px;
+    border-radius: 12px;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.google {
+    background: white;
+    color: #111;
+}
+
+.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.guest-btn {
+    background: #27364c;
+    color: white;
+}
+
+.login-btn:active,
+.guest-btn:active,
+.start-btn:active,
+.quick-menu button:active {
+    transform: scale(.97);
+}
+
+.or {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin: 18px 0 4px;
+    font-size: 11px;
+    opacity: .5;
+}
+
+.or span {
+    flex: 1;
+    height: 1px;
+    background: #536075;
+}
+
+.login-note {
+    font-size: 9px;
+    opacity: .35;
+    margin-top: 18px;
+}
+
+/* =========================
+   LOBBY
+========================= */
+
+.top {
+    height: 70px;
+    padding: 12px 25px;
+    display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #263044;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    background: rgba(5,8,14,.55);
 }
 
 .logo {
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-.logo span {
-    margin-left: 5px;
-}
-
-.currency {
+.player {
     display: flex;
+    align-items: center;
     gap: 10px;
-    font-size: 14px;
+    text-align: right;
 }
 
-.currency div {
-    background: #1a2231;
-    padding: 7px 10px;
-    border-radius: 10px;
-}
-
-/* LOBBY */
-
-.lobby {
-    padding: 25px 18px 90px;
-    text-align: center;
-}
-
-.welcome p {
-    font-size: 12px;
-    letter-spacing: 3px;
-    opacity: 0.7;
-}
-
-.welcome h1 {
-    font-size: 38px;
-    margin: 5px 0;
-}
-
-.welcome span {
+.player b {
+    display: block;
     font-size: 13px;
-    opacity: 0.7;
 }
 
-/* CHARACTER */
-
-.character-box {
-    margin-top: 30px;
+.player small {
+    display: block;
+    font-size: 9px;
+    opacity: .5;
+    margin-top: 3px;
 }
 
-.character {
-    width: 210px;
-    height: 250px;
-    margin: auto;
-    border-radius: 25px;
-    background: linear-gradient(145deg, #1d293b, #0c111a);
-    border: 2px solid #34445d;
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #26344a;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 110px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    font-size: 21px;
 }
 
-.character-box h2 {
-    margin-top: 15px;
+.lobby {
+    width: 100%;
+    height: calc(100vh - 110px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7vw;
+    padding: 20px;
+}
+
+.hero {
+    text-align: center;
+}
+
+.hero > p {
+    font-size: 10px;
+    letter-spacing: 4px;
+    opacity: .5;
+}
+
+.hero h1 {
+    font-size: clamp(22px, 4vw, 42px);
+    margin: 5px 0 10px;
+}
+
+.character-preview {
+    width: min(220px, 25vw);
+    height: min(260px, 48vh);
+    min-width: 150px;
+    min-height: 170px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(70px, 10vw, 120px);
+    border-radius: 25px;
+    background: linear-gradient(145deg, #25344a, #0b1018);
+    border: 1px solid #3b4c65;
+    box-shadow: 0 20px 50px rgba(0,0,0,.45);
+}
+
+.hero h2 {
+    margin: 8px 0 10px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.start-btn {
+    padding: 14px 45px;
+    border-radius: 13px;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+    background: linear-gradient(90deg, #ff7800, #ffb300);
+    box-shadow: 0 8px 25px rgba(255,145,0,.2);
+}
+
+/* QUICK MENU */
+
+.quick-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 115px);
+    gap: 12px;
+}
+
+.quick-menu button {
+    height: 90px;
+    border-radius: 16px;
+    background: rgba(21,31,47,.9);
+    border: 1px solid #2e3d54;
+    color: white;
     font-size: 25px;
 }
 
-.character-box p {
-    margin: 5px 0 15px;
-    opacity: 0.6;
-    font-size: 13px;
-}
-
-/* BUTTONS */
-
-button {
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.character-box button {
-    background: #26364f;
-    padding: 12px 20px;
-    border-radius: 12px;
-}
-
-.start-button {
-    width: 100%;
-    margin-top: 25px;
-    padding: 17px;
-    border-radius: 15px;
-    font-size: 18px;
-    background: linear-gradient(90deg, #ff7a00, #ffb000);
-    box-shadow: 0 8px 25px rgba(255, 145, 0, 0.25);
-}
-
-.start-button:active,
-.character-box button:active,
-.menu button:active {
-    transform: scale(0.97);
-}
-
-/* MENU */
-
-.menu {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 25px;
-}
-
-.menu button {
-    background: #151e2d;
-    border: 1px solid #27344a;
-    border-radius: 14px;
-    padding: 13px 5px;
-    font-size: 20px;
-}
-
-.menu span {
+.quick-menu span {
     display: block;
     font-size: 10px;
+    opacity: .65;
     margin-top: 7px;
-    opacity: 0.75;
 }
-
-/* FOOTER */
 
 footer {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
+    bottom: 12px;
+    left: 25px;
     font-size: 11px;
-    opacity: 0.45;
+    opacity: .45;
 }
 
-/* MOBILE */
+/* ANIMATION */
 
-@media (max-width: 350px) {
-    .character {
-        width: 180px;
-        height: 220px;
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
     }
 
-    .welcome h1 {
-        font-size: 32px;
+    50% {
+        transform: scale(1.08);
     }
+}
+
+/* PORTRAIT NOTICE */
+
+@media (orientation: portrait) {
+    #game::after {
+        content: "↻  Please rotate your phone";
+        position: absolute;
+        inset: 0;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: #05070b;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
     }
+}
+
+@media (max-height: 450px) {
+    .top {
+        height: 58px;
+        padding: 8px 18px;
+    }
+
+    .lobby {
+        height: calc(100vh - 80px);
+    }
+
+    .character-preview {
+        height: 180px;
+        width: 150px;
+    }
+
+    .quick-menu {
+        grid-template-columns: repeat(2, 100px);
+    }
+
+    .quick-menu button {
+        height: 70px;
+    }
+                                 }
