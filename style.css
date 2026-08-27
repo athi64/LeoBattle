@@ -2,7 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html,
@@ -14,367 +14,955 @@ body {
     color: white;
 }
 
-#game {
-    width: 100%;
-    height: 100%;
+button {
+    cursor: pointer;
 }
 
-.page {
+
+/* ================= SCREEN SYSTEM ================= */
+
+.screen {
     display: none;
     width: 100%;
     height: 100%;
 }
 
-.page.active {
+.screen.active {
     display: flex;
 }
 
 
 /* ================= LOADING ================= */
 
-.loading-screen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+#loading1,
+#loading2 {
+
     justify-content: center;
     align-items: center;
-    text-align: center;
 
     background:
-        radial-gradient(circle at center,
-        #3b2a0b 0%,
-        #100c04 35%,
-        #020202 75%);
+        radial-gradient(
+            circle,
+            #3d2b0c 0%,
+            #151004 30%,
+            #030303 75%
+        );
 }
 
-.lion {
-    font-size: 100px;
-    margin-bottom: 25px;
+.loadingContent {
+    width: 90%;
+    max-width: 850px;
 
-    filter: drop-shadow(0 0 25px #f5bd35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    animation: lionPulse 1.4s infinite;
+    text-align: center;
 }
 
-.lion-ring {
-    font-size: 100px;
-    padding: 25px;
+.lionLogo {
+    font-size: clamp(70px, 12vw, 130px);
 
-    border: 3px solid #dcae38;
-    border-radius: 50%;
+    animation:
+        lionPulse 1.2s infinite;
 
-    box-shadow:
-        0 0 20px #dcae38,
-        0 0 60px #8c661d;
-
-    animation: spinGlow 2s linear infinite;
+    filter:
+        drop-shadow(0 0 20px #e5b73b);
 }
 
-.loading-screen h1 {
-    margin-top: 20px;
-    font-size: clamp(45px, 9vw, 100px);
-    letter-spacing: 10px;
-    color: #f2c14e;
-    text-shadow: 0 0 25px #c48b20;
-}
+.loadingContent h1 {
 
-.loading-screen p {
     margin-top: 15px;
-    letter-spacing: 6px;
-    color: #ddd;
+
+    font-size: clamp(40px, 8vw, 90px);
+
+    letter-spacing: 8px;
+
+    color: #eac24c;
+
+    text-shadow:
+        0 0 15px #a9791e,
+        0 0 35px #604713;
 }
 
-.loading-box {
-    width: min(75%, 800px);
-    height: 14px;
+.tagline {
 
-    margin-top: 60px;
+    margin-top: 12px;
 
-    border: 2px solid #76591e;
+    color: #b9b9b9;
+
+    letter-spacing: 5px;
+
+    font-size: 14px;
+}
+
+.loader {
+
+    width: 80%;
+    height: 15px;
+
+    margin-top: 50px;
+
+    background: #111;
+
+    border: 2px solid #6d521b;
+
     border-radius: 20px;
 
     overflow: hidden;
-    background: #111;
 }
 
-#firstBar,
-#secondBar {
+#bar1,
+#bar2 {
+
     width: 0%;
+
     height: 100%;
 
-    background: linear-gradient(
-        90deg,
-        #8f6415,
-        #ffd75b,
-        #fff0a8
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #8d6419,
+            #f4cc54,
+            #fff3a7
+        );
 
-    box-shadow: 0 0 20px #e9b832;
+    box-shadow:
+        0 0 20px #e4b83e;
 
-    transition: width .08s linear;
+    transition: width .05s linear;
 }
 
-#firstPercent,
-#secondPercent {
+#percent1,
+#percent2 {
+
     margin-top: 15px;
+
     font-size: 22px;
-    color: #f2c14e;
+
+    color: #f1ca50;
 }
 
-.loading-screen small {
+#status1,
+#status2 {
+
     margin-top: 10px;
+
     color: #aaa;
+
+    letter-spacing: 2px;
+}
+
+
+/* SECOND LOADING */
+
+.lionRing {
+
+    font-size: 100px;
+
+    padding: 25px;
+
+    border-radius: 50%;
+
+    border: 3px solid #e4b83e;
+
+    box-shadow:
+        0 0 20px #e4b83e,
+        0 0 60px #765617;
+
+    animation:
+        ringPulse 1.3s infinite;
 }
 
 
 /* ================= LOGIN ================= */
 
-.login-screen {
-    width: 100%;
-    height: 100%;
+#login {
 
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 
     background:
-        radial-gradient(circle,
-        #17130a,
-        #050505 65%);
+        radial-gradient(
+            circle,
+            #1e1708,
+            #050505 70%
+        );
 }
 
-.login-logo {
-    font-size: 75px;
+.loginBox {
+
+    width: min(90%, 430px);
+
+    text-align: center;
+
+    padding: 25px;
 }
 
-.login-screen h1 {
-    font-size: clamp(40px, 8vw, 80px);
-    color: #f2c14e;
-    letter-spacing: 7px;
+.loginLion {
+
+    font-size: 65px;
+
+    filter:
+        drop-shadow(0 0 20px #dcae39);
 }
 
-.login-screen p {
-    margin: 10px 0 30px;
-    color: #aaa;
+.loginBox h1 {
+
+    margin-top: 5px;
+
+    font-size: 50px;
+
+    letter-spacing: 5px;
+
+    color: #eac24c;
+}
+
+.loginTitle {
+
+    margin: 10px 0 25px;
+
+    color: #999;
+
     letter-spacing: 3px;
 }
 
-.login-btn,
-.signup {
-    width: min(85%, 420px);
-    height: 55px;
+.loginButton,
+.createButton {
 
-    margin: 7px;
+    width: 100%;
 
-    border: none;
+    height: 52px;
+
+    margin: 6px 0;
+
     border-radius: 8px;
 
-    font-size: 16px;
+    border: none;
+
     font-weight: bold;
 
-    cursor: pointer;
+    font-size: 14px;
+
+    transition: .2s;
+}
+
+.loginButton:hover,
+.createButton:hover {
+
+    transform: scale(1.02);
 }
 
 .google {
+
     background: white;
+
     color: #111;
 }
 
 .facebook {
-    background: #1877f2;
+
+    background: #2469d8;
+
     color: white;
 }
 
 .guest {
-    background: #222;
+
+    background: #171717;
+
     color: white;
+
     border: 1px solid #777;
 }
 
-.signup {
+.createButton {
+
     background: transparent;
-    color: #f2c14e;
-    border: 1px solid #f2c14e;
+
+    color: #eac24c;
+
+    border: 1px solid #eac24c;
 }
 
-.or {
-    margin: 15px;
-    color: #888;
+.orLine {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    justify-content: center;
+
+    margin: 10px 0;
+
+    color: #777;
+}
+
+.orLine span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background: #333;
+}
+
+.loginTerms {
+
+    margin-top: 15px;
+
+    color: #666;
+
+    font-size: 11px;
 }
 
 
 /* ================= LOBBY ================= */
 
-#lobby {
+.lobbyScreen {
+
     flex-direction: column;
 
     background:
-        radial-gradient(circle at center,
-        #251d0c,
-        #070707 65%);
+        radial-gradient(
+            circle at center,
+            #2b210c,
+            #080808 65%
+        );
 }
 
-header {
+
+/* TOP BAR */
+
+.topBar {
+
+    height: 72px;
+
     width: 100%;
-    min-height: 70px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    padding: 12px 25px;
+    padding: 0 25px;
 
-    border-bottom: 1px solid #4e3a16;
+    background:
+        rgba(5,5,5,.88);
+
+    border-bottom:
+        1px solid #4d3914;
 }
 
 .logo {
-    color: #f2c14e;
-    font-size: 22px;
+
+    color: #eac24c;
+
+    font-size: 21px;
+
     font-weight: bold;
 }
 
-.currency {
+.topCurrencies {
+
     display: flex;
-    gap: 20px;
+
+    gap: 25px;
+
+    font-size: 18px;
+
+    font-weight: bold;
 }
 
 .diamond {
-    color: white;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 8px #ffffff;
 }
 
 .gold {
-    color: #e9bd43;
+
+    color: #e6b83c;
 }
 
-.player {
+.playerBox {
+
     display: flex;
-    gap: 8px;
+
     align-items: center;
+
+    gap: 12px;
 }
 
-.player small {
+.playerBox small {
+
     display: block;
+
+    margin-top: 3px;
+
     color: #888;
+
+    font-size: 10px;
 }
 
-main {
+.avatar {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background: #1b1b1b;
+
+    border: 1px solid #66501d;
+}
+
+
+/* MAIN */
+
+.lobbyMain {
+
     flex: 1;
 
     display: grid;
 
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns:
+        1fr
+        1.3fr
+        1fr;
 
     align-items: center;
+
     gap: 20px;
 
-    padding: 30px;
+    padding: 20px 30px;
 }
 
-.character {
+
+/* CHARACTER */
+
+.characterSection {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
     text-align: center;
 }
 
-.character-image {
-    font-size: 150px;
+.characterImage {
 
-    filter: drop-shadow(0 0 25px #d59f2c);
+    width: 210px;
 
-    animation: float 2s ease-in-out infinite;
+    height: 260px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 145px;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle,
+            #34270d,
+            #090909
+        );
+
+    border:
+        1px solid #68501c;
+
+    box-shadow:
+        0 0 30px #493612;
+
+    overflow: hidden;
 }
 
-.character h2 {
-    color: #f2c14e;
-    font-size: 35px;
+.characterImage img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
 }
 
-.character p {
+.characterSection h2 {
+
+    margin-top: 10px;
+
+    color: #eac24c;
+
+    font-size: 30px;
+}
+
+.level {
+
     color: #aaa;
+
+    margin-top: 5px;
 }
 
-.battle {
+.rank {
+
+    margin-top: 7px;
+
+    color: #eac24c;
+}
+
+.uploadCharacter {
+
+    margin-top: 12px;
+
+    padding: 8px 12px;
+
+    border: 1px solid #6c521c;
+
+    border-radius: 6px;
+
+    color: #aaa;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.uploadCharacter input {
+    display: none;
+}
+
+
+/* CENTER */
+
+.centerPanel {
+
     text-align: center;
 }
 
-.battle span {
-    color: #999;
-    letter-spacing: 4px;
+.modeLabel {
+
+    color: #888;
+
+    letter-spacing: 3px;
+
+    font-size: 12px;
 }
 
-.battle h1 {
-    font-size: 55px;
-    color: #f2c14e;
-    margin: 10px;
+.centerPanel h1 {
+
+    margin: 8px;
+
+    font-size: 48px;
+
+    color: #eac24c;
+
+    text-shadow:
+        0 0 20px #785917;
 }
 
-.battle p {
+#mapTitle {
+
     color: #aaa;
+
+    margin-bottom: 15px;
 }
 
-.start {
-    margin-top: 30px;
+.modeButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.modeButtons button {
+
+    padding: 8px 13px;
+
+    background: #111;
+
+    color: #ddd;
+
+    border: 1px solid #493914;
+
+    border-radius: 5px;
+}
+
+.modeButtons button:hover {
+
+    color: #eac24c;
+
+    border-color: #eac24c;
+}
+
+
+/* START */
+
+.startButton {
+
+    margin-top: 25px;
 
     width: 230px;
-    height: 70px;
 
-    border: 2px solid #f2c14e;
+    height: 72px;
+
     border-radius: 10px;
 
-    background: linear-gradient(
-        135deg,
-        #9b701d,
-        #e6b93d,
-        #805b16
-    );
+    border: 2px solid #f0c94e;
+
+    background:
+        linear-gradient(
+            135deg,
+            #785719,
+            #e2b83e,
+            #785719
+        );
 
     color: white;
 
-    font-size: 25px;
+    box-shadow:
+        0 0 25px #765616;
+
+    font-size: 26px;
+
     font-weight: bold;
-
-    cursor: pointer;
-
-    box-shadow: 0 0 25px #9b701d;
 }
 
-.start small {
+.startButton small {
+
     display: block;
-    font-size: 10px;
+
+    margin-top: 4px;
+
+    font-size: 9px;
+
     letter-spacing: 2px;
 }
 
-.menu {
+.startButton:hover {
+
+    transform: scale(1.04);
+}
+
+
+/* RIGHT MENU */
+
+.featureMenu {
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+}
+
+.featureMenu button {
+
+    min-height: 70px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(10,10,10,.9);
+
+    border:
+        1px solid #493914;
+
+    color: white;
+
+    font-size: 21px;
+}
+
+.featureMenu button:hover {
+
+    border-color: #eac24c;
+
+    background: #191407;
+}
+
+.featureMenu span {
+
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    color: #aaa;
+}
+
+
+/* BOTTOM */
+
+.bottomBar {
+
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    border-top: 1px solid #493914;
+
+    background: rgba(3,3,3,.9);
+}
+
+.bottomBar button {
+
+    background: transparent;
+
+    border: none;
+
+    color: #aaa;
+
+    padding: 0 18px;
+}
+
+.bottomBar button:hover {
+
+    color: #eac24c;
+}
+
+
+/* ================= FEATURE WINDOW ================= */
+
+.featureOverlay {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(0,0,0,.75);
+}
+
+.featureOverlay.show {
+
+    display: flex;
+}
+
+.featureWindow {
+
+    width: min(80%, 700px);
+
+    min-height: 300px;
+
+    padding: 30px;
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171208,
+            #080808
+        );
+
+    border:
+        1px solid #eac24c;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 40px #4c3812;
+}
+
+.featureWindow h1 {
+
+    color: #eac24c;
+
+    margin-bottom: 25px;
+}
+
+.closeButton {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    background: none;
+
+    border: none;
+
+    color: #fff;
+
+    font-size: 22px;
+}
+
+.panelGrid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 12px;
 }
 
-.menu button {
-    min-height: 70px;
+.panelItem {
+
+    padding: 20px 10px;
+
+    text-align: center;
+
+    border:
+        1px solid #463613;
+
+    border-radius: 8px;
+
+    background: #0e0e0e;
+
+    color: #ddd;
+}
+
+.panelItem b {
+
+    display: block;
+
+    color: #eac24c;
+
+    margin-bottom: 7px;
+}
+
+
+/* ================= BATTLE ================= */
+
+.battleScreen {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 200;
+
+    background:
+        radial-gradient(
+            circle,
+            #33270d,
+            #050505 70%
+        );
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.battleScreen.show {
+
+    display: flex;
+}
+
+.battleTop {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 25px;
+
+    right: 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #eac24c;
+}
+
+.battleCenter {
+
+    text-align: center;
+}
+
+.battleLion {
+
+    font-size: 120px;
+
+    animation: lionPulse 1s infinite;
+}
+
+.battleCenter h1 {
+
+    color: #eac24c;
+
+    font-size: 45px;
+}
+
+.battleCenter p {
+
+    color: #aaa;
+
+    margin: 10px;
+}
+
+.battleCenter button {
+
+    margin-top: 25px;
+
+    padding: 14px 30px;
 
     background: #111;
-    border: 1px solid #4e3a16;
-    border-radius: 10px;
 
-    color: white;
-    cursor: pointer;
-}
+    border: 1px solid #eac24c;
 
-.menu button:hover {
-    border-color: #f2c14e;
-}
+    color: #eac24c;
 
-.menu span {
-    display: block;
-    margin-top: 5px;
-    font-size: 12px;
+    border-radius: 7px;
 }
 
 
 /* ================= ANIMATIONS ================= */
 
 @keyframes lionPulse {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes ringPulse {
+
     0%,100% {
         transform: scale(1);
     }
@@ -384,37 +972,16 @@ main {
     }
 }
 
-@keyframes spinGlow {
-    0% {
-        transform: rotate(0deg) scale(1);
-    }
 
-    50% {
-        transform: rotate(180deg) scale(1.08);
-    }
-
-    100% {
-        transform: rotate(360deg) scale(1);
-    }
-}
-
-@keyframes float {
-    0%,100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-}
-
-
-/* LANDSCAPE GAME */
+/* ================= PORTRAIT ================= */
 
 @media (orientation: portrait) {
 
-    body::before {
-        content: "↻  PLEASE ROTATE YOUR PHONE";
+    body::after {
+
+        content:
+            "↻  ROTATE YOUR PHONE TO LANDSCAPE";
+
         position: fixed;
 
         z-index: 9999;
@@ -422,21 +989,19 @@ main {
         inset: 0;
 
         display: flex;
+
         justify-content: center;
+
         align-items: center;
+
+        text-align: center;
 
         background: #050505;
 
-        color: #f2c14e;
+        color: #eac24c;
 
-        font-size: 25px;
-        text-align: center;
-    }
-}
+        font-size: 22px;
 
-@media (orientation: landscape) {
-
-    body::before {
-        display: none;
+        font-weight: bold;
     }
     }
