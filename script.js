@@ -1,241 +1,242 @@
-// =====================================
-// LEOBATTLE START SYSTEM
-// =====================================
+document.addEventListener("DOMContentLoaded", function () {
 
-const firstLoading = document.getElementById("firstLoading");
-const loginPage = document.getElementById("loginPage");
-const secondLoading = document.getElementById("secondLoading");
-const lobby = document.getElementById("lobby");
+    const firstLoading = document.getElementById("firstLoading");
+    const loginPage = document.getElementById("loginPage");
+    const secondLoading = document.getElementById("secondLoading");
+    const lobby = document.getElementById("lobby");
 
-const firstBar = document.getElementById("firstBar");
-const firstPercent = document.getElementById("firstPercent");
-const firstStatus = document.getElementById("firstStatus");
+    const firstBar = document.getElementById("firstBar");
+    const firstPercent = document.getElementById("firstPercent");
+    const firstStatus = document.getElementById("firstStatus");
 
-const secondBar = document.getElementById("secondBar");
-const secondPercent = document.getElementById("secondPercent");
-const secondStatus = document.getElementById("secondStatus");
+    const secondBar = document.getElementById("secondBar");
+    const secondPercent = document.getElementById("secondPercent");
+    const secondStatus = document.getElementById("secondStatus");
 
 
-// =====================================
-// SCREEN CONTROL
-// =====================================
+    // ==============================
+    // SCREEN CHANGE
+    // ==============================
 
-function showPage(page) {
+    function showPage(page) {
 
-    document.querySelectorAll(".page").forEach(item => {
-        item.classList.remove("active");
-    });
+        document.querySelectorAll(".page").forEach(function (item) {
+            item.classList.remove("active");
+        });
 
-    page.classList.add("active");
-}
-
-
-// =====================================
-// FIRST LOADING
-// =====================================
-
-let firstProgress = 0;
-
-const firstTimer = setInterval(() => {
-
-    firstProgress++;
-
-    firstBar.style.width = firstProgress + "%";
-    firstPercent.textContent = firstProgress + "%";
-
-    if (firstProgress < 30) {
-        firstStatus.textContent =
-            "STARTING LEOBATTLE...";
-    }
-    else if (firstProgress < 60) {
-        firstStatus.textContent =
-            "LOADING GAME SYSTEM...";
-    }
-    else if (firstProgress < 85) {
-        firstStatus.textContent =
-            "PREPARING CHARACTER SYSTEM...";
-    }
-    else {
-        firstStatus.textContent =
-            "ALMOST READY...";
+        page.classList.add("active");
     }
 
-    if (firstProgress >= 100) {
 
-        clearInterval(firstTimer);
-
-        firstStatus.textContent =
-            "WELCOME TO LEOBATTLE";
-
-        setTimeout(() => {
-            showPage(loginPage);
-        }, 900);
-    }
-
-}, 35);
-
-
-// =====================================
-// GOOGLE
-// =====================================
-
-function loginGoogle() {
-
-    startSecondLoading("Google Player");
-
-}
-
-
-// =====================================
-// FACEBOOK
-// =====================================
-
-function loginFacebook() {
-
-    startSecondLoading("Facebook Player");
-
-}
-
-
-// =====================================
-// GUEST
-// =====================================
-
-function loginGuest() {
-
-    const number =
-        Math.floor(100000 + Math.random() * 900000);
-
-    const guestName =
-        "Guest_" + number;
-
-    document.getElementById("playerName").textContent =
-        guestName;
-
-    document.getElementById("playerId").textContent =
-        "ID: " + number;
-
-    startSecondLoading(guestName);
-
-}
-
-
-// =====================================
-// SIGN UP
-// =====================================
-
-function openSignup() {
-
-    alert(
-        "LeoBattle Account System\n\n" +
-        "Full Sign Up system will be connected next."
-    );
-
-}
-
-
-// =====================================
-// SECOND LOADING
-// =====================================
-
-function startSecondLoading(playerName) {
-
-    showPage(secondLoading);
-
-    secondBar.style.width = "0%";
-    secondPercent.textContent = "0%";
+    // ==============================
+    // FIRST LOADING
+    // ==============================
 
     let progress = 0;
 
-    secondStatus.textContent =
-        "CONNECTING PLAYER...";
+    firstBar.style.width = "0%";
+    firstPercent.textContent = "0%";
 
-    const timer = setInterval(() => {
+    const firstTimer = setInterval(function () {
 
-        progress++;
+        progress += 2;
 
-        secondBar.style.width =
-            progress + "%";
+        if (progress > 100) {
+            progress = 100;
+        }
 
-        secondPercent.textContent =
-            progress + "%";
+        firstBar.style.width = progress + "%";
+        firstPercent.textContent = progress + "%";
 
         if (progress < 25) {
-
-            secondStatus.textContent =
-                "CONNECTING PLAYER...";
-
+            firstStatus.textContent = "STARTING LEOBATTLE...";
         }
         else if (progress < 50) {
-
-            secondStatus.textContent =
-                "LOADING PLAYER DATA...";
-
+            firstStatus.textContent = "LOADING GAME SYSTEM...";
         }
         else if (progress < 75) {
-
-            secondStatus.textContent =
-                "PREPARING BATTLEFIELD...";
-
+            firstStatus.textContent = "AWAKENING THE BATTLE...";
         }
-        else if (progress < 95) {
-
-            secondStatus.textContent =
-                "LOADING LOBBY...";
-
+        else if (progress < 100) {
+            firstStatus.textContent = "PREPARING YOUR JOURNEY...";
         }
         else {
-
-            secondStatus.textContent =
-                "ENTERING LEOBATTLE...";
-
+            firstStatus.textContent = "LEOBATTLE READY";
         }
 
         if (progress >= 100) {
 
-            clearInterval(timer);
+            clearInterval(firstTimer);
 
-            setTimeout(() => {
-
-                document.getElementById(
-                    "welcomeName"
-                ).textContent =
-                    "WELCOME " +
-                    playerName.toUpperCase();
-
-                showPage(lobby);
-
-            }, 700);
+            setTimeout(function () {
+                showPage(loginPage);
+            }, 800);
         }
 
-    }, 30);
-
-}
+    }, 60);
 
 
-// =====================================
-// LOBBY FEATURES
-// =====================================
+    // ==============================
+    // GOOGLE
+    // ==============================
 
-function openFeature(feature) {
-
-    alert(
-        feature +
-        "\n\nComing Soon 🔥"
-    );
-
-}
+    window.loginGoogle = function () {
+        startSecondLoading("Google Player");
+    };
 
 
-// =====================================
-// START BATTLE
-// =====================================
+    // ==============================
+    // FACEBOOK
+    // ==============================
 
-function startBattle() {
+    window.loginFacebook = function () {
+        startSecondLoading("Facebook Player");
+    };
 
-    alert(
-        "🪂 DROP INTO BATTLE\n\n" +
-        "Battle system is coming next!"
-    );
 
-}
+    // ==============================
+    // GUEST
+    // ==============================
+
+    window.loginGuest = function () {
+
+        const number =
+            Math.floor(100000 + Math.random() * 900000);
+
+        const guestName = "Guest_" + number;
+
+        document.getElementById("playerName").textContent =
+            guestName;
+
+        document.getElementById("playerId").textContent =
+            "ID: " + number;
+
+        startSecondLoading(guestName);
+    };
+
+
+    // ==============================
+    // SIGN UP
+    // ==============================
+
+    window.openSignup = function () {
+
+        alert(
+            "CREATE NEW ACCOUNT\n\n" +
+            "Real account system will be connected soon."
+        );
+    };
+
+
+    // ==============================
+    // SECOND LOADING
+    // ==============================
+
+    function startSecondLoading(playerName) {
+
+        showPage(secondLoading);
+
+        let progress2 = 0;
+
+        secondBar.style.width = "0%";
+        secondPercent.textContent = "0%";
+
+        secondStatus.textContent =
+            "CONNECTING PLAYER...";
+
+        const secondTimer = setInterval(function () {
+
+            progress2 += 2;
+
+            if (progress2 > 100) {
+                progress2 = 100;
+            }
+
+            secondBar.style.width =
+                progress2 + "%";
+
+            secondPercent.textContent =
+                progress2 + "%";
+
+
+            if (progress2 < 25) {
+
+                secondStatus.textContent =
+                    "CONNECTING PLAYER...";
+
+            }
+            else if (progress2 < 50) {
+
+                secondStatus.textContent =
+                    "LOADING PLAYER DATA...";
+
+            }
+            else if (progress2 < 75) {
+
+                secondStatus.textContent =
+                    "PREPARING BATTLEFIELD...";
+
+            }
+            else if (progress2 < 100) {
+
+                secondStatus.textContent =
+                    "PREPARING LEOBATTLE LOBBY...";
+
+            }
+            else {
+
+                secondStatus.textContent =
+                    "ENTERING LEOBATTLE...";
+
+            }
+
+
+            if (progress2 >= 100) {
+
+                clearInterval(secondTimer);
+
+                setTimeout(function () {
+
+                    document.getElementById(
+                        "welcomeName"
+                    ).textContent =
+                        "WELCOME " +
+                        playerName.toUpperCase();
+
+                    showPage(lobby);
+
+                }, 800);
+            }
+
+        }, 60);
+    }
+
+
+    // ==============================
+    // LOBBY MENU
+    // ==============================
+
+    window.openFeature = function (feature) {
+
+        alert(
+            feature +
+            "\n\nComing Soon 🔥"
+        );
+
+    };
+
+
+    // ==============================
+    // START BATTLE
+    // ==============================
+
+    window.startBattle = function () {
+
+        alert(
+            "🪂 DROP INTO BATTLE\n\n" +
+            "Battle system is coming next!"
+        );
+
+    };
+
+});
