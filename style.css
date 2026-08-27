@@ -1,3 +1,7 @@
+/* ==========================================
+   LEOBATTLE - COMPLETE STYLE SYSTEM
+   ========================================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,44 +13,76 @@ html,
 body {
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     background: #050505;
     color: white;
 }
 
+body {
+    min-height: 100vh;
+}
+
 button {
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
-/* ================= SCREEN SYSTEM ================= */
+/* ==========================================
+   SCREEN SYSTEM
+   ========================================== */
+
+#app {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+}
 
 .screen {
     display: none;
     width: 100%;
+    min-height: 100vh;
     height: 100%;
+    position: relative;
 }
 
 .screen.active {
-    display: flex;
+    display: flex !important;
 }
 
 
-/* ================= LOADING ================= */
+/* ==========================================
+   FIRST + SECOND LOADING
+   ========================================== */
 
 #loading1,
 #loading2 {
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
 
     justify-content: center;
     align-items: center;
 
+    text-align: center;
+
     background:
         radial-gradient(
-            circle,
-            #3d2b0c 0%,
-            #151004 30%,
-            #030303 75%
+            circle at center,
+            #4a350d 0%,
+            #211806 28%,
+            #0b0904 55%,
+            #020202 100%
         );
+}
+
+#loading1.active,
+#loading2.active {
+    display: flex !important;
 }
 
 .loadingContent {
@@ -56,111 +92,175 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
+
+    animation: loadingAppear 0.5s ease;
 }
+
+
+/* ==========================================
+   LION LOGO
+   ========================================== */
 
 .lionLogo {
-    font-size: clamp(70px, 12vw, 130px);
+    font-size: clamp(75px, 15vw, 150px);
 
-    animation:
-        lionPulse 1.2s infinite;
+    line-height: 1;
+
+    animation: lionPulse 1.2s infinite;
 
     filter:
-        drop-shadow(0 0 20px #e5b73b);
+        drop-shadow(0 0 15px #e5b73b)
+        drop-shadow(0 0 35px #8b641c);
 }
 
+
+/* ==========================================
+   LEOBATTLE TITLE
+   ========================================== */
+
 .loadingContent h1 {
+    margin-top: 18px;
 
-    margin-top: 15px;
+    font-size: clamp(38px, 8vw, 90px);
 
-    font-size: clamp(40px, 8vw, 90px);
+    font-weight: 900;
 
-    letter-spacing: 8px;
+    letter-spacing: 7px;
 
     color: #eac24c;
 
     text-shadow:
-        0 0 15px #a9791e,
-        0 0 35px #604713;
+        0 0 10px #a9791e,
+        0 0 25px #604713,
+        0 0 45px rgba(234, 194, 76, 0.4);
 }
 
-.tagline {
 
+/* ==========================================
+   TAGLINE
+   ========================================== */
+
+.tagline {
     margin-top: 12px;
 
     color: #b9b9b9;
 
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 
-    font-size: 14px;
+    font-size: 13px;
+
+    font-weight: 600;
 }
 
+
+/* ==========================================
+   LOADING BAR
+   ========================================== */
+
 .loader {
+    width: min(80%, 700px);
 
-    width: 80%;
-    height: 15px;
+    height: 16px;
 
-    margin-top: 50px;
+    margin-top: 45px;
 
-    background: #111;
+    background: #0b0b0b;
 
     border: 2px solid #6d521b;
 
     border-radius: 20px;
 
     overflow: hidden;
+
+    box-shadow:
+        0 0 10px rgba(228, 184, 62, 0.2),
+        inset 0 0 8px #000;
 }
+
+
+/* ==========================================
+   PROGRESS BAR
+   ========================================== */
 
 #bar1,
 #bar2 {
-
     width: 0%;
 
     height: 100%;
+
+    display: block;
 
     background:
         linear-gradient(
             90deg,
             #8d6419,
+            #e4b83e,
             #f4cc54,
             #fff3a7
         );
 
     box-shadow:
+        0 0 10px #e4b83e,
         0 0 20px #e4b83e;
 
-    transition: width .05s linear;
+    transition: width 0.05s linear;
 }
+
+
+/* ==========================================
+   PERCENT
+   ========================================== */
 
 #percent1,
 #percent2 {
-
     margin-top: 15px;
 
-    font-size: 22px;
+    font-size: 23px;
+
+    font-weight: bold;
 
     color: #f1ca50;
+
+    text-shadow:
+        0 0 10px #a9791e;
 }
+
+
+/* ==========================================
+   STATUS
+   ========================================== */
 
 #status1,
 #status2 {
-
     margin-top: 10px;
+
+    min-height: 20px;
 
     color: #aaa;
 
     letter-spacing: 2px;
+
+    font-size: 12px;
 }
 
 
-/* SECOND LOADING */
+/* ==========================================
+   SECOND LOADING LION
+   ========================================== */
 
 .lionRing {
+    width: 145px;
+    height: 145px;
 
-    font-size: 100px;
+    display: flex;
 
-    padding: 25px;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 85px;
 
     border-radius: 50%;
 
@@ -168,107 +268,136 @@ button {
 
     box-shadow:
         0 0 20px #e4b83e,
-        0 0 60px #765617;
+        0 0 50px #765617,
+        inset 0 0 20px #765617;
 
-    animation:
-        ringPulse 1.3s infinite;
+    animation: ringPulse 1.3s infinite;
 }
 
 
-/* ================= LOGIN ================= */
+/* ==========================================
+   LOGIN SCREEN
+   ========================================== */
 
 #login {
+    display: none;
 
     justify-content: center;
     align-items: center;
 
+    min-height: 100vh;
+
     background:
         radial-gradient(
-            circle,
-            #1e1708,
-            #050505 70%
+            circle at center,
+            #2c210b 0%,
+            #100d05 40%,
+            #050505 75%,
+            #020202 100%
         );
 }
 
-.loginBox {
+#login.active {
+    display: flex !important;
+}
 
+.loginBox {
     width: min(90%, 430px);
+
+    padding: 28px;
 
     text-align: center;
 
-    padding: 25px;
+    animation: loadingAppear 0.5s ease;
 }
+
 
 .loginLion {
-
-    font-size: 65px;
+    font-size: 68px;
 
     filter:
-        drop-shadow(0 0 20px #dcae39);
+        drop-shadow(0 0 15px #dcae39);
 }
 
+
 .loginBox h1 {
+    margin-top: 6px;
 
-    margin-top: 5px;
-
-    font-size: 50px;
+    font-size: clamp(38px, 10vw, 52px);
 
     letter-spacing: 5px;
 
     color: #eac24c;
+
+    text-shadow:
+        0 0 15px #795b18;
 }
 
-.loginTitle {
 
+.loginTitle {
     margin: 10px 0 25px;
 
     color: #999;
 
     letter-spacing: 3px;
+
+    font-size: 12px;
 }
+
+
+/* ==========================================
+   LOGIN BUTTONS
+   ========================================== */
 
 .loginButton,
 .createButton {
-
     width: 100%;
 
-    height: 52px;
+    min-height: 52px;
 
     margin: 6px 0;
 
     border-radius: 8px;
 
-    border: none;
+    font-size: 14px;
 
     font-weight: bold;
 
-    font-size: 14px;
-
-    transition: .2s;
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
 }
 
 .loginButton:hover,
 .createButton:hover {
-
     transform: scale(1.02);
 }
 
-.google {
-
-    background: white;
-
-    color: #111;
+.loginButton:active,
+.createButton:active {
+    transform: scale(0.98);
 }
 
-.facebook {
 
+.google {
+    background: #ffffff;
+
+    color: #111;
+
+    border: none;
+}
+
+
+.facebook {
     background: #2469d8;
 
     color: white;
+
+    border: none;
 }
 
-.guest {
 
+.guest {
     background: #171717;
 
     color: white;
@@ -276,8 +405,8 @@ button {
     border: 1px solid #777;
 }
 
-.createButton {
 
+.createButton {
     background: transparent;
 
     color: #eac24c;
@@ -285,23 +414,28 @@ button {
     border: 1px solid #eac24c;
 }
 
-.orLine {
 
+/* ==========================================
+   OR LINE
+   ========================================== */
+
+.orLine {
     display: flex;
 
     align-items: center;
 
-    gap: 10px;
-
     justify-content: center;
+
+    gap: 10px;
 
     margin: 10px 0;
 
     color: #777;
+
+    font-size: 12px;
 }
 
 .orLine span {
-
     height: 1px;
 
     flex: 1;
@@ -309,8 +443,8 @@ button {
     background: #333;
 }
 
-.loginTerms {
 
+.loginTerms {
     margin-top: 15px;
 
     color: #666;
@@ -319,28 +453,40 @@ button {
 }
 
 
-/* ================= LOBBY ================= */
+/* ==========================================
+   LOBBY
+   ========================================== */
 
 .lobbyScreen {
+    display: none;
 
     flex-direction: column;
+
+    min-height: 100vh;
 
     background:
         radial-gradient(
             circle at center,
-            #2b210c,
-            #080808 65%
+            #2b210c 0%,
+            #100d05 35%,
+            #080808 70%,
+            #030303 100%
         );
 }
 
+.lobbyScreen.active {
+    display: flex !important;
+}
 
-/* TOP BAR */
+
+/* ==========================================
+   TOP BAR
+   ========================================== */
 
 .topBar {
-
-    height: 72px;
-
     width: 100%;
+
+    min-height: 72px;
 
     display: flex;
 
@@ -348,27 +494,33 @@ button {
 
     justify-content: space-between;
 
+    gap: 15px;
+
     padding: 0 25px;
 
-    background:
-        rgba(5,5,5,.88);
+    background: rgba(5, 5, 5, 0.92);
 
-    border-bottom:
-        1px solid #4d3914;
+    border-bottom: 1px solid #4d3914;
+
+    flex-shrink: 0;
 }
 
-.logo {
 
+.logo {
     color: #eac24c;
 
     font-size: 21px;
 
     font-weight: bold;
+
+    white-space: nowrap;
 }
 
-.topCurrencies {
 
+.topCurrencies {
     display: flex;
+
+    align-items: center;
 
     gap: 25px;
 
@@ -377,21 +529,21 @@ button {
     font-weight: bold;
 }
 
-.diamond {
 
+.diamond {
     color: #ffffff;
 
     text-shadow:
         0 0 8px #ffffff;
 }
 
-.gold {
 
+.gold {
     color: #e6b83c;
 }
 
-.playerBox {
 
+.playerBox {
     display: flex;
 
     align-items: center;
@@ -399,8 +551,8 @@ button {
     gap: 12px;
 }
 
-.playerBox small {
 
+.playerBox small {
     display: block;
 
     margin-top: 3px;
@@ -410,17 +562,17 @@ button {
     font-size: 10px;
 }
 
-.avatar {
 
+.avatar {
     width: 40px;
 
     height: 40px;
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+
+    justify-content: center;
 
     border-radius: 50%;
 
@@ -430,11 +582,16 @@ button {
 }
 
 
-/* MAIN */
+/* ==========================================
+   LOBBY MAIN
+   ========================================== */
 
 .lobbyMain {
-
     flex: 1;
+
+    width: 100%;
+
+    min-height: 0;
 
     display: grid;
 
@@ -451,10 +608,11 @@ button {
 }
 
 
-/* CHARACTER */
+/* ==========================================
+   CHARACTER
+   ========================================== */
 
 .characterSection {
-
     display: flex;
 
     flex-direction: column;
@@ -466,8 +624,8 @@ button {
     text-align: center;
 }
 
-.characterImage {
 
+.characterImage {
     width: 210px;
 
     height: 260px;
@@ -489,8 +647,7 @@ button {
             #090909
         );
 
-    border:
-        1px solid #68501c;
+    border: 1px solid #68501c;
 
     box-shadow:
         0 0 30px #493612;
@@ -498,8 +655,8 @@ button {
     overflow: hidden;
 }
 
-.characterImage img {
 
+.characterImage img {
     width: 100%;
 
     height: 100%;
@@ -507,8 +664,8 @@ button {
     object-fit: cover;
 }
 
-.characterSection h2 {
 
+.characterSection h2 {
     margin-top: 10px;
 
     color: #eac24c;
@@ -516,22 +673,22 @@ button {
     font-size: 30px;
 }
 
-.level {
 
+.level {
     color: #aaa;
 
     margin-top: 5px;
 }
 
-.rank {
 
+.rank {
     margin-top: 7px;
 
     color: #eac24c;
 }
 
-.uploadCharacter {
 
+.uploadCharacter {
     margin-top: 12px;
 
     padding: 8px 12px;
@@ -547,20 +704,22 @@ button {
     cursor: pointer;
 }
 
+
 .uploadCharacter input {
     display: none;
 }
 
 
-/* CENTER */
+/* ==========================================
+   CENTER PANEL
+   ========================================== */
 
 .centerPanel {
-
     text-align: center;
 }
 
-.modeLabel {
 
+.modeLabel {
     color: #888;
 
     letter-spacing: 3px;
@@ -568,8 +727,8 @@ button {
     font-size: 12px;
 }
 
-.centerPanel h1 {
 
+.centerPanel h1 {
     margin: 8px;
 
     font-size: 48px;
@@ -580,15 +739,19 @@ button {
         0 0 20px #785917;
 }
 
-#mapTitle {
 
+#mapTitle {
     color: #aaa;
 
     margin-bottom: 15px;
 }
 
-.modeButtons {
 
+/* ==========================================
+   MODE BUTTONS
+   ========================================== */
+
+.modeButtons {
     display: flex;
 
     justify-content: center;
@@ -598,8 +761,8 @@ button {
     gap: 7px;
 }
 
-.modeButtons button {
 
+.modeButtons button {
     padding: 8px 13px;
 
     background: #111;
@@ -609,20 +772,25 @@ button {
     border: 1px solid #493914;
 
     border-radius: 5px;
+
+    transition: 0.2s;
 }
 
-.modeButtons button:hover {
 
+.modeButtons button:hover {
     color: #eac24c;
 
     border-color: #eac24c;
+
+    background: #191407;
 }
 
 
-/* START */
+/* ==========================================
+   START BUTTON
+   ========================================== */
 
 .startButton {
-
     margin-top: 25px;
 
     width: 230px;
@@ -649,10 +817,12 @@ button {
     font-size: 26px;
 
     font-weight: bold;
+
+    transition: 0.2s;
 }
 
-.startButton small {
 
+.startButton small {
     display: block;
 
     margin-top: 4px;
@@ -662,16 +832,17 @@ button {
     letter-spacing: 2px;
 }
 
-.startButton:hover {
 
+.startButton:hover {
     transform: scale(1.04);
 }
 
 
-/* RIGHT MENU */
+/* ==========================================
+   RIGHT FEATURE MENU
+   ========================================== */
 
 .featureMenu {
-
     display: grid;
 
     grid-template-columns: 1fr 1fr;
@@ -679,32 +850,33 @@ button {
     gap: 10px;
 }
 
-.featureMenu button {
 
+.featureMenu button {
     min-height: 70px;
 
     border-radius: 9px;
 
     background:
-        rgba(10,10,10,.9);
+        rgba(10, 10, 10, 0.9);
 
-    border:
-        1px solid #493914;
+    border: 1px solid #493914;
 
     color: white;
 
     font-size: 21px;
+
+    transition: 0.2s;
 }
 
-.featureMenu button:hover {
 
+.featureMenu button:hover {
     border-color: #eac24c;
 
     background: #191407;
 }
 
-.featureMenu span {
 
+.featureMenu span {
     display: block;
 
     margin-top: 5px;
@@ -715,13 +887,18 @@ button {
 }
 
 
-/* BOTTOM */
+/* ==========================================
+   BOTTOM BAR
+   ========================================== */
 
 .bottomBar {
+    width: 100%;
 
-    height: 55px;
+    min-height: 55px;
 
     display: flex;
+
+    align-items: center;
 
     justify-content: center;
 
@@ -729,11 +906,13 @@ button {
 
     border-top: 1px solid #493914;
 
-    background: rgba(3,3,3,.9);
+    background: rgba(3, 3, 3, 0.9);
+
+    flex-shrink: 0;
 }
 
-.bottomBar button {
 
+.bottomBar button {
     background: transparent;
 
     border: none;
@@ -741,18 +920,21 @@ button {
     color: #aaa;
 
     padding: 0 18px;
+
+    transition: 0.2s;
 }
 
-.bottomBar button:hover {
 
+.bottomBar button:hover {
     color: #eac24c;
 }
 
 
-/* ================= FEATURE WINDOW ================= */
+/* ==========================================
+   FEATURE OVERLAY
+   ========================================== */
 
 .featureOverlay {
-
     display: none;
 
     position: fixed;
@@ -765,18 +947,21 @@ button {
 
     justify-content: center;
 
-    background:
-        rgba(0,0,0,.75);
+    background: rgba(0, 0, 0, 0.75);
 }
+
 
 .featureOverlay.show {
-
-    display: flex;
+    display: flex !important;
 }
 
-.featureWindow {
 
+.featureWindow {
     width: min(80%, 700px);
+
+    max-height: 85vh;
+
+    overflow-y: auto;
 
     min-height: 300px;
 
@@ -791,8 +976,7 @@ button {
             #080808
         );
 
-    border:
-        1px solid #eac24c;
+    border: 1px solid #eac24c;
 
     border-radius: 15px;
 
@@ -800,15 +984,15 @@ button {
         0 0 40px #4c3812;
 }
 
-.featureWindow h1 {
 
+.featureWindow h1 {
     color: #eac24c;
 
     margin-bottom: 25px;
 }
 
-.closeButton {
 
+.closeButton {
     position: absolute;
 
     top: 12px;
@@ -824,8 +1008,8 @@ button {
     font-size: 22px;
 }
 
-.panelGrid {
 
+.panelGrid {
     display: grid;
 
     grid-template-columns:
@@ -834,14 +1018,13 @@ button {
     gap: 12px;
 }
 
-.panelItem {
 
+.panelItem {
     padding: 20px 10px;
 
     text-align: center;
 
-    border:
-        1px solid #463613;
+    border: 1px solid #463613;
 
     border-radius: 8px;
 
@@ -850,8 +1033,8 @@ button {
     color: #ddd;
 }
 
-.panelItem b {
 
+.panelItem b {
     display: block;
 
     color: #eac24c;
@@ -860,10 +1043,11 @@ button {
 }
 
 
-/* ================= BATTLE ================= */
+/* ==========================================
+   BATTLE SCREEN
+   ========================================== */
 
 .battleScreen {
-
     display: none;
 
     position: fixed;
@@ -884,13 +1068,13 @@ button {
     justify-content: center;
 }
 
-.battleScreen.show {
 
-    display: flex;
+.battleScreen.show {
+    display: flex !important;
 }
 
-.battleTop {
 
+.battleTop {
     position: absolute;
 
     top: 20px;
@@ -906,34 +1090,35 @@ button {
     color: #eac24c;
 }
 
-.battleCenter {
 
+.battleCenter {
     text-align: center;
 }
 
-.battleLion {
 
+.battleLion {
     font-size: 120px;
 
-    animation: lionPulse 1s infinite;
+    animation:
+        lionPulse 1s infinite;
 }
 
-.battleCenter h1 {
 
+.battleCenter h1 {
     color: #eac24c;
 
     font-size: 45px;
 }
 
-.battleCenter p {
 
+.battleCenter p {
     color: #aaa;
 
     margin: 10px;
 }
 
-.battleCenter button {
 
+.battleCenter button {
     margin-top: 25px;
 
     padding: 14px 30px;
@@ -948,11 +1133,14 @@ button {
 }
 
 
-/* ================= ANIMATIONS ================= */
+/* ==========================================
+   ANIMATIONS
+   ========================================== */
 
 @keyframes lionPulse {
 
-    0%,100% {
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -961,9 +1149,11 @@ button {
     }
 }
 
+
 @keyframes ringPulse {
 
-    0%,100% {
+    0%,
+    100% {
         transform: scale(1);
     }
 
@@ -973,12 +1163,41 @@ button {
 }
 
 
-/* ================= PORTRAIT ================= */
+@keyframes loadingAppear {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+}
+
+
+/* ==========================================
+   LANDSCAPE PHONE
+   ========================================== */
+
+@media (orientation: landscape) {
+
+    body::after {
+        display: none !important;
+    }
+}
+
+
+/* ==========================================
+   PORTRAIT PHONE
+   ========================================== */
 
 @media (orientation: portrait) {
 
     body::after {
-
         content:
             "↻  ROTATE YOUR PHONE TO LANDSCAPE";
 
@@ -996,6 +1215,8 @@ button {
 
         text-align: center;
 
+        padding: 30px;
+
         background: #050505;
 
         color: #eac24c;
@@ -1003,5 +1224,128 @@ button {
         font-size: 22px;
 
         font-weight: bold;
+    }
+}
+
+
+/* ==========================================
+   SMALL LANDSCAPE SCREENS
+   ========================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .topBar {
+        min-height: 55px;
+
+        padding: 0 15px;
+    }
+
+    .lobbyMain {
+        padding: 10px 15px;
+
+        gap: 10px;
+    }
+
+    .characterImage {
+        width: 130px;
+
+        height: 160px;
+
+        font-size: 90px;
+    }
+
+    .characterSection h2 {
+        font-size: 22px;
+    }
+
+    .startButton {
+        margin-top: 12px;
+
+        width: 190px;
+
+        height: 58px;
+
+        font-size: 21px;
+    }
+
+    .featureMenu button {
+        min-height: 55px;
+
+        font-size: 17px;
+    }
+
+    .bottomBar {
+        min-height: 42px;
+    }
+}
+
+
+/* ==========================================
+   MOBILE LANDSCAPE
+   ========================================== */
+
+@media (max-width: 900px) and (orientation: landscape) {
+
+    .loadingContent h1 {
+        font-size: 45px;
+
+        margin-top: 10px;
+    }
+
+    .lionLogo {
+        font-size: 70px;
+    }
+
+    .loader {
+        margin-top: 25px;
+
+        height: 12px;
+    }
+
+    #percent1,
+    #percent2 {
+        margin-top: 8px;
+
+        font-size: 18px;
+    }
+
+    #status1,
+    #status2 {
+        margin-top: 5px;
+
+        font-size: 10px;
+    }
+
+    .lionRing {
+        width: 90px;
+
+        height: 90px;
+
+        font-size: 55px;
+    }
+
+    .loginBox {
+        padding: 15px;
+    }
+
+    .loginLion {
+        font-size: 40px;
+    }
+
+    .loginBox h1 {
+        font-size: 32px;
+    }
+
+    .loginTitle {
+        margin: 5px 0 12px;
+    }
+
+    .loginButton,
+    .createButton {
+        min-height: 40px;
+
+        margin: 3px 0;
+
+        font-size: 11px;
     }
     }
