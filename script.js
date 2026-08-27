@@ -1,46 +1,11 @@
-let progress = 0;
+function createCharacter() {
+    alert("Character Creation Coming Soon! 🦁");
+}
 
-const loadingBar =
-    document.getElementById("loadingBar");
+function startBattle() {
+    alert("Battle Mode Coming Soon! ⚔️");
+}
 
-const loadingText =
-    document.getElementById("loadingText");
-
-const loading =
-    setInterval(function () {
-
-        progress += 2;
-
-        loadingBar.style.width =
-            progress + "%";
-
-        if (progress < 30) {
-
-            loadingText.textContent =
-                "INITIALIZING...";
-
-        } else if (progress < 60) {
-
-            loadingText.textContent =
-                "LOADING WORLD...";
-
-        } else if (progress < 90) {
-
-            loadingText.textContent =
-                "PREPARING BATTLE...";
-
-        } else {
-
-            loadingText.textContent =
-                "READY";
-        }
-
-        if (progress >= 100) {
-
-            clearInterval(loading);
-
-            loadingText.textContent =
-                "LEOBATTLE READY";
-        }
-
-    }, 80);
+function openPage(page) {
+    alert(page.charAt(0).toUpperCase() + page.slice(1) + " Coming Soon! 🎮");
+}
