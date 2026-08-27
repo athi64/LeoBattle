@@ -2,183 +2,396 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-          maximum-scale=1.0, user-scalable=no">
+          content="width=device-width,
+          initial-scale=1.0,
+          maximum-scale=1.0,
+          user-scalable=no">
 
     <title>LeoBattle</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div id="game">
+<div id="app">
 
-    <!-- FIRST LOADING -->
-    <section id="firstLoading" class="page active">
-        <div class="loading-screen">
+    <!-- ================= FIRST LOADING ================= -->
 
-            <div class="lion">🦁</div>
+    <section id="loading1" class="screen active">
+
+        <div class="loadingContent">
+
+            <div class="lionLogo">🦁</div>
 
             <h1>LEOBATTLE</h1>
 
-            <p>RISE • FIGHT • CONQUER</p>
-
-            <div class="loading-box">
-                <div id="firstBar"></div>
+            <div class="tagline">
+                RISE • FIGHT • CONQUER
             </div>
 
-            <div id="firstPercent">0%</div>
+            <div class="loader">
+                <div id="bar1"></div>
+            </div>
 
-            <small id="firstStatus">
-                INITIALIZING BATTLE SYSTEM...
-            </small>
+            <div id="percent1">0%</div>
 
-        </div>
-    </section>
-
-
-    <!-- LOGIN -->
-    <section id="loginPage" class="page">
-
-        <div class="login-screen">
-
-            <div class="lion small">🦁</div>
-
-            <h1>LEOBATTLE</h1>
-            <p>CREATE YOUR LEGEND</p>
-
-            <button onclick="loginGoogle()" class="login-btn google">
-                🌐 CONTINUE WITH GOOGLE
-            </button>
-
-            <button onclick="loginFacebook()" class="login-btn facebook">
-                f &nbsp; CONTINUE WITH FACEBOOK
-            </button>
-
-            <div class="or">OR</div>
-
-            <button onclick="loginGuest()" class="login-btn guest">
-                🎮 CONTINUE AS GUEST
-            </button>
-
-            <button onclick="openSignup()" class="signup">
-                CREATE NEW ACCOUNT
-            </button>
+            <div id="status1">
+                STARTING LEOBATTLE...
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- SECOND LOADING -->
-    <section id="secondLoading" class="page">
+    <!-- ================= LOGIN ================= -->
 
-        <div class="loading-screen">
+    <section id="login" class="screen">
 
-            <div class="lion-ring">
+        <div class="loginBox">
+
+            <div class="loginLion">
                 🦁
             </div>
 
             <h1>LEOBATTLE</h1>
 
-            <p>ENTERING BATTLEFIELD</p>
+            <p class="loginTitle">
+                CREATE YOUR LEGEND
+            </p>
 
-            <div class="loading-box">
-                <div id="secondBar"></div>
+            <button class="loginButton google"
+                    onclick="googleLogin()">
+                <b>G</b>
+                CONTINUE WITH GOOGLE
+            </button>
+
+            <button class="loginButton facebook"
+                    onclick="facebookLogin()">
+                <b>f</b>
+                CONTINUE WITH FACEBOOK
+            </button>
+
+            <div class="orLine">
+                <span></span>
+                OR
+                <span></span>
             </div>
 
-            <div id="secondPercent">0%</div>
+            <button class="loginButton guest"
+                    onclick="guestLogin()">
+                🎮 CONTINUE AS GUEST
+            </button>
 
-            <small id="secondStatus">
-                CONNECTING PLAYER...
-            </small>
+            <button class="createButton"
+                    onclick="signup()">
+                CREATE NEW ACCOUNT
+            </button>
+
+            <div class="loginTerms">
+                LeoBattle Account
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- LOBBY -->
-    <section id="lobby" class="page">
+    <!-- ================= SECOND LOADING ================= -->
 
-        <header>
+    <section id="loading2" class="screen">
+
+        <div class="loadingContent second">
+
+            <div class="lionRing">
+                🦁
+            </div>
+
+            <h1>LEOBATTLE</h1>
+
+            <div class="tagline">
+                PREPARING YOUR BATTLEFIELD
+            </div>
+
+            <div class="loader">
+                <div id="bar2"></div>
+            </div>
+
+            <div id="percent2">0%</div>
+
+            <div id="status2">
+                CONNECTING PLAYER...
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN LOBBY ================= -->
+
+    <section id="lobby" class="screen lobbyScreen">
+
+        <!-- TOP BAR -->
+
+        <header class="topBar">
 
             <div class="logo">
-                🦁 LEOBATTLE
+                🦁 <span>LEOBATTLE</span>
             </div>
 
-            <div class="currency">
-                <span class="diamond">◆ <b id="diamondValue">500</b></span>
-                <span class="gold">● <b id="goldValue">1000</b></span>
+            <div class="topCurrencies">
+
+                <div class="diamond">
+                    ◆ <span id="diamond">500</span>
+                </div>
+
+                <div class="gold">
+                    🪙 <span id="gold">1000</span>
+                </div>
+
             </div>
 
-            <div class="player">
-                👤
-                <span id="playerName">Guest</span>
-                <small id="playerId">ID: 000000</small>
+            <div class="playerBox">
+
+                <div>
+                    <b id="playerName">
+                        Guest
+                    </b>
+
+                    <small id="playerId">
+                        ID: 000000
+                    </small>
+                </div>
+
+                <div class="avatar">
+                    👤
+                </div>
+
             </div>
 
         </header>
 
 
-        <main>
+        <!-- MAIN AREA -->
 
-            <div class="character">
+        <main class="lobbyMain">
 
-                <div class="character-image">
+
+            <!-- CHARACTER -->
+
+            <div class="characterSection">
+
+                <div id="characterImage"
+                     class="characterImage">
                     🦁
                 </div>
 
-                <h2>LEO</h2>
-                <p>LEVEL 1</p>
+                <h2 id="characterName">
+                    LEO
+                </h2>
+
+                <div class="level">
+                    LEVEL 1
+                </div>
+
+                <div class="rank">
+                    🏆 ROOKIE
+                </div>
+
+                <label class="uploadCharacter">
+                    📷 CHANGE CHARACTER PHOTO
+                    <input type="file"
+                           accept="image/*"
+                           onchange="changeCharacter(event)">
+                </label>
 
             </div>
 
 
-            <div class="battle">
+            <!-- CENTER -->
 
-                <span>BATTLE MODE</span>
-                <h1>CLASSIC</h1>
-                <p>RANDOM MAP</p>
+            <div class="centerPanel">
 
-                <button onclick="startBattle()" class="start">
-                    ⚔ START
-                    <small>DROP INTO BATTLE</small>
+                <div class="modeLabel">
+                    CURRENT BATTLE MODE
+                </div>
+
+                <h1 id="modeTitle">
+                    CLASSIC
+                </h1>
+
+                <div id="mapTitle">
+                    RANDOM MAP
+                </div>
+
+                <div class="modeButtons">
+
+                    <button onclick="selectMode('CLASSIC')">
+                        ⚔ CLASSIC
+                    </button>
+
+                    <button onclick="selectMode('MILITARY')">
+                        🎖 MILITARY
+                    </button>
+
+                    <button onclick="selectMode('TRAINING')">
+                        🎯 TRAINING
+                    </button>
+
+                    <button onclick="selectMode('DRIVE')">
+                        🚗 DRIVE
+                    </button>
+
+                </div>
+
+                <button class="startButton"
+                        onclick="startBattle()">
+
+                    <strong>START</strong>
+
+                    <small>
+                        DROP INTO BATTLE
+                    </small>
+
                 </button>
 
             </div>
 
 
-            <div class="menu">
+            <!-- RIGHT MENU -->
 
-                <button onclick="openFeature('CHARACTER')">
-                    👤<span>CHARACTER</span>
+            <div class="featureMenu">
+
+                <button onclick="openPanel('CHARACTER')">
+                    👤
+                    <span>CHARACTER</span>
                 </button>
 
-                <button onclick="openFeature('WEAPONS')">
-                    🔫<span>WEAPONS</span>
+                <button onclick="openPanel('WEAPONS')">
+                    🔫
+                    <span>WEAPONS</span>
                 </button>
 
-                <button onclick="openFeature('MAPS')">
-                    🗺️<span>MAPS</span>
+                <button onclick="openPanel('MAPS')">
+                    🌍
+                    <span>MAPS</span>
                 </button>
 
-                <button onclick="openFeature('MISSIONS')">
-                    🎯<span>MISSIONS</span>
+                <button onclick="openPanel('MISSIONS')">
+                    🎯
+                    <span>MISSIONS</span>
                 </button>
 
-                <button onclick="openFeature('INVENTORY')">
-                    🎒<span>INVENTORY</span>
+                <button onclick="openPanel('INVENTORY')">
+                    🎒
+                    <span>INVENTORY</span>
                 </button>
 
-                <button onclick="openFeature('SETTINGS')">
-                    ⚙️<span>SETTINGS</span>
+                <button onclick="openPanel('SKINS')">
+                    👕
+                    <span>SKINS</span>
+                </button>
+
+                <button onclick="openPanel('VEHICLES')">
+                    🚗
+                    <span>VEHICLES</span>
+                </button>
+
+                <button onclick="openPanel('SETTINGS')">
+                    ⚙
+                    <span>SETTINGS</span>
                 </button>
 
             </div>
 
         </main>
+
+
+        <!-- BOTTOM -->
+
+        <footer class="bottomBar">
+
+            <button onclick="openPanel('PROFILE')">
+                👤 PROFILE
+            </button>
+
+            <button onclick="openPanel('MISSIONS')">
+                🎯 MISSIONS
+            </button>
+
+            <button onclick="openPanel('SHOP')">
+                🛒 SHOP
+            </button>
+
+            <button onclick="openPanel('RANK')">
+                🏆 RANK
+            </button>
+
+        </footer>
+
+    </section>
+
+
+    <!-- ================= FEATURE PANEL ================= -->
+
+    <div id="featurePanel"
+         class="featureOverlay">
+
+        <div class="featureWindow">
+
+            <button class="closeButton"
+                    onclick="closePanel()">
+                ✕
+            </button>
+
+            <h1 id="panelTitle">
+                CHARACTER
+            </h1>
+
+            <div id="panelContent">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= BATTLE SCREEN ================= -->
+
+    <section id="battleScreen"
+             class="battleScreen">
+
+        <div class="battleTop">
+
+            <span>LEOBATTLE</span>
+
+            <span id="battleMode">
+                CLASSIC
+            </span>
+
+        </div>
+
+        <div class="battleCenter">
+
+            <div class="battleLion">
+                🦁
+            </div>
+
+            <h1>BATTLE READY</h1>
+
+            <p id="battleMap">
+                RANDOM MAP
+            </p>
+
+            <button onclick="returnLobby()">
+                RETURN TO LOBBY
+            </button>
+
+        </div>
 
     </section>
 
