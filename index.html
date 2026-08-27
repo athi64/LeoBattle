@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport"
-          content="width=device-width, initial-scale=1.0,
-          maximum-scale=1.0, user-scalable=no">
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
 
     <title>LeoBattle</title>
 
@@ -13,380 +16,645 @@
 
 <body>
 
-    <div id="game">
+<div id="game">
 
-        <!-- FIRST LOADING -->
-        <section id="firstLoading" class="page active">
+    <!-- =====================================
+         FIRST LOADING SCREEN
+    ====================================== -->
 
-            <div class="loading-content">
+    <section id="firstLoading" class="page active">
 
-                <div class="lion-logo">
-                    🦁
-                </div>
+        <div class="loading-content">
 
-                <h1>LEOBATTLE</h1>
+            <div class="lion-logo">🦁</div>
 
-                <p class="loading-subtitle">
-                    RISE • FIGHT • CONQUER
-                </p>
+            <h1>LEOBATTLE</h1>
 
-                <div class="loading-bar">
-                    <div id="firstBar"></div>
-                </div>
+            <p class="loading-subtitle">
+                RISE • FIGHT • CONQUER
+            </p>
 
-                <div id="firstPercent">0%</div>
+            <div class="loading-bar">
+                <div id="firstBar"></div>
+            </div>
 
-                <p id="firstStatus">
-                    INITIALIZING BATTLE SYSTEM...
-                </p>
+            <div id="firstPercent">0%</div>
+
+            <p id="firstStatus">
+                STARTING LEOBATTLE...
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================
+         LOGIN SCREEN
+    ====================================== -->
+
+    <section id="loginPage" class="page">
+
+        <div class="login-container">
+
+            <div class="login-logo">🦁</div>
+
+            <h1>LEOBATTLE</h1>
+
+            <p>CREATE YOUR LEGEND</p>
+
+
+            <button class="google-btn"
+                    onclick="loginGoogle()">
+
+                <span>G</span>
+                CONTINUE WITH GOOGLE
+
+            </button>
+
+
+            <button class="facebook-btn"
+                    onclick="loginFacebook()">
+
+                <span>f</span>
+                CONTINUE WITH FACEBOOK
+
+            </button>
+
+
+            <div class="divider">
+
+                <span></span>
+
+                OR
+
+                <span></span>
 
             </div>
 
-        </section>
+
+            <button class="guest-btn"
+                    onclick="loginGuest()">
+
+                🎮 CONTINUE AS GUEST
+
+            </button>
 
 
-        <!-- LOGIN -->
-        <section id="loginPage" class="page">
+            <button class="signup-btn"
+                    onclick="openSignup()">
 
-            <div class="login-container">
+                CREATE NEW ACCOUNT
 
-                <div class="login-logo">
-                    🦁
-                </div>
+            </button>
 
-                <h1>LEOBATTLE</h1>
 
-                <p>CREATE YOUR LEGEND</p>
+            <p class="terms">
+                By continuing, you agree to LeoBattle Terms.
+            </p>
 
-                <button class="google-btn"
-                        onclick="loginGoogle()">
-                    <span>G</span>
-                    CONTINUE WITH GOOGLE
-                </button>
+        </div>
 
-                <button class="facebook-btn"
-                        onclick="loginFacebook()">
-                    <span>f</span>
-                    CONTINUE WITH FACEBOOK
-                </button>
+    </section>
 
-                <div class="divider">
-                    <span></span>
-                    OR
-                    <span></span>
-                </div>
 
-                <button class="guest-btn"
-                        onclick="loginGuest()">
-                    🎮 CONTINUE AS GUEST
-                </button>
+    <!-- =====================================
+         SECOND LOADING SCREEN
+    ====================================== -->
 
-                <button class="signup-btn"
-                        onclick="openSignup()">
-                    CREATE NEW ACCOUNT
-                </button>
+    <section id="secondLoading" class="page">
 
-                <p class="terms">
-                    By continuing, you agree to LeoBattle Terms.
-                </p>
+        <div class="second-loading">
+
+            <div class="lion-ring">
+                🦁
+            </div>
+
+            <h1>LEOBATTLE</h1>
+
+            <div class="loading-bar">
+
+                <div id="secondBar"></div>
 
             </div>
 
-        </section>
+            <div id="secondPercent">
+                0%
+            </div>
+
+            <p id="secondStatus">
+                PREPARING BATTLEFIELD...
+            </p>
+
+        </div>
+
+    </section>
 
 
-        <!-- SECOND LOADING -->
-        <section id="secondLoading" class="page">
+    <!-- =====================================
+         MAIN LOBBY
+    ====================================== -->
 
-            <div class="second-loading">
+    <section id="lobby" class="page">
 
-                <div class="lion-ring">
-                    🦁
+        <header class="top-bar">
+
+            <div class="brand">
+                🦁 <b>LEOBATTLE</b>
+            </div>
+
+
+            <div class="player-info">
+
+                <div>
+
+                    <b id="playerName">
+                        Guest
+                    </b>
+
+                    <small id="playerId">
+                        ID: 000000
+                    </small>
+
                 </div>
 
-                <h1>LEOBATTLE</h1>
-
-                <div class="loading-bar">
-                    <div id="secondBar"></div>
+                <div class="avatar">
+                    👤
                 </div>
-
-                <div id="secondPercent">0%</div>
-
-                <p id="secondStatus">
-                    PREPARING BATTLEFIELD...
-                </p>
 
             </div>
 
-        </section>
 
+            <div class="currency">
 
-        <!-- MAIN LOBBY -->
-        <section id="lobby" class="page">
-
-            <header class="top-bar">
-
-                <div class="brand">
-                    🦁 <b>LEOBATTLE</b>
+                <div class="diamond">
+                    ◆
+                    <span id="diamondValue">
+                        500
+                    </span>
                 </div>
 
-                <div class="player-info">
-
-                    <div>
-                        <b id="playerName">Guest</b>
-                        <small id="playerId">
-                            ID: 000000
-                        </small>
-                    </div>
-
-                    <div class="avatar">
-                        👤
-                    </div>
-
+                <div class="gold">
+                    🪙
+                    <span id="goldValue">
+                        1000
+                    </span>
                 </div>
 
-                <div class="currency">
+            </div>
 
-                    <div class="diamond">
-                        ◆ <span id="diamondValue">500</span>
-                    </div>
+        </header>
 
-                    <div class="gold">
-                        🪙 <span id="goldValue">1000</span>
-                    </div>
 
+        <main class="lobby-main">
+
+
+            <!-- CHARACTER -->
+
+            <div class="character-area">
+
+                <div class="character-placeholder">
+                    🦁
                 </div>
 
-            </header>
+                <h2>LEO</h2>
+
+                <p>LEVEL 1</p>
+
+            </div>
 
 
-            <main class="lobby-main">
+            <!-- MENU -->
 
-                <div class="character-area">
+            <div class="lobby-menu">
 
-                    <div class="character-placeholder">
-                        🦁
-                    </div>
-
-                    <h2>LEO</h2>
-
-                    <p>LEVEL 1</p>
-
-                </div>
+                <button onclick="openFeature('CHARACTER')">
+                    👤
+                    <span>CHARACTER</span>
+                </button>
 
 
-                <div class="lobby-menu">
-
-                    <button onclick="openFeature('CHARACTER')">
-                        👤
-                        <span>CHARACTER</span>
-                    </button>
-
-                    <button onclick="openFeature('WEAPONS')">
-                        🔫
-                        <span>WEAPONS</span>
-                    </button>
-
-                    <button onclick="openFeature('MAPS')">
-                        🗺️
-                        <span>MAPS</span>
-                    </button>
-
-                    <button onclick="openFeature('MISSIONS')">
-                        🎯
-                        <span>MISSIONS</span>
-                    </button>
-
-                    <button onclick="openFeature('INVENTORY')">
-                        🎒
-                        <span>INVENTORY</span>
-                    </button>
-
-                    <button onclick="openFeature('SETTINGS')">
-                        ⚙️
-                        <span>SETTINGS</span>
-                    </button>
-
-                </div>
+                <button onclick="openFeature('WEAPONS')">
+                    🔫
+                    <span>WEAPONS</span>
+                </button>
 
 
-                <div class="battle-panel">
+                <button onclick="openFeature('MAPS')">
+                    🗺️
+                    <span>MAPS</span>
+                </button>
 
-                    <p>BATTLE MODE</p>
 
-                    <h2>CLASSIC</h2>
+                <button onclick="openFeature('MISSIONS')">
+                    🎯
+                    <span>MISSIONS</span>
+                </button>
 
-                    <span>RANDOM MAP</span>
 
-                    <button class="start-button"
-                            onclick="startBattle()">
-                        START
-                        <small>DROP INTO BATTLE</small>
-                    </button>
+                <button onclick="openFeature('INVENTORY')">
+                    🎒
+                    <span>INVENTORY</span>
+                </button>
 
-                </div>
 
-            </main>
+                <button onclick="openFeature('SETTINGS')">
+                    ⚙️
+                    <span>SETTINGS</span>
+                </button>
 
-        </section>
+            </div>
 
-    </div>
+
+            <!-- BATTLE PANEL -->
+
+            <div class="battle-panel">
+
+                <p>BATTLE MODE</p>
+
+                <h2>CLASSIC</h2>
+
+                <span>
+                    RANDOM MAP
+                </span>
+
+
+                <button class="start-button"
+                        onclick="startBattle()">
+
+                    START
+
+                    <small>
+                        DROP INTO BATTLE
+                    </small>
+
+                </button>
+
+            </div>
+
+        </main>
+
+    </section>
+
+</div>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const pages = document.querySelectorAll(".page");
+(function () {
 
-    function showPage(id) {
-        pages.forEach(function(page) {
-            page.classList.remove("active");
-        });
+    "use strict";
 
-        document.getElementById(id).classList.add("active");
-    }
 
-    // FIRST LOADING
-    let progress = 0;
+    /* =================================
+       SCREEN SYSTEM
+    ================================= */
 
-    const firstBar = document.getElementById("firstBar");
-    const firstPercent = document.getElementById("firstPercent");
-    const firstStatus = document.getElementById("firstStatus");
+    function showScreen(screenId) {
 
-    const firstTimer = setInterval(function() {
+        var screens =
+            document.querySelectorAll(".page");
 
-        progress += 2;
+        for (var i = 0; i < screens.length; i++) {
 
-        firstBar.style.width = progress + "%";
-        firstPercent.textContent = progress + "%";
+            screens[i].classList.remove("active");
 
-        if (progress < 30) {
-            firstStatus.textContent = "STARTING LEOBATTLE...";
-        } else if (progress < 60) {
-            firstStatus.textContent = "LOADING GAME SYSTEM...";
-        } else if (progress < 85) {
-            firstStatus.textContent = "AWAKENING THE BATTLE...";
-        } else {
-            firstStatus.textContent = "PREPARING YOUR JOURNEY...";
         }
 
-        if (progress >= 100) {
+        var target =
+            document.getElementById(screenId);
+
+        if (target) {
+
+            target.classList.add("active");
+
+        }
+
+    }
+
+
+    /* =================================
+       FIRST LOADING
+    ================================= */
+
+    var firstProgress = 0;
+
+    var firstBar =
+        document.getElementById("firstBar");
+
+    var firstPercent =
+        document.getElementById("firstPercent");
+
+    var firstStatus =
+        document.getElementById("firstStatus");
+
+
+    var firstTimer = setInterval(function () {
+
+        firstProgress += 2;
+
+
+        if (firstProgress > 100) {
+
+            firstProgress = 100;
+
+        }
+
+
+        firstBar.style.width =
+            firstProgress + "%";
+
+
+        firstPercent.innerHTML =
+            firstProgress + "%";
+
+
+        if (firstProgress < 20) {
+
+            firstStatus.innerHTML =
+                "STARTING LEOBATTLE...";
+
+        }
+
+        else if (firstProgress < 40) {
+
+            firstStatus.innerHTML =
+                "LOADING GAME SYSTEM...";
+
+        }
+
+        else if (firstProgress < 60) {
+
+            firstStatus.innerHTML =
+                "LOADING CHARACTER SYSTEM...";
+
+        }
+
+        else if (firstProgress < 80) {
+
+            firstStatus.innerHTML =
+                "PREPARING BATTLE SYSTEM...";
+
+        }
+
+        else if (firstProgress < 100) {
+
+            firstStatus.innerHTML =
+                "ALMOST READY...";
+
+        }
+
+        else {
+
+            firstStatus.innerHTML =
+                "WELCOME TO LEOBATTLE";
+
+        }
+
+
+        if (firstProgress >= 100) {
 
             clearInterval(firstTimer);
 
-            firstStatus.textContent = "LEOBATTLE READY";
 
-            setTimeout(function() {
-                showPage("loginPage");
-            }, 800);
+            setTimeout(function () {
+
+                showScreen("loginPage");
+
+            }, 900);
+
         }
+
 
     }, 60);
 
 
-    // GOOGLE
-    window.loginGoogle = function() {
+    /* =================================
+       GOOGLE LOGIN
+    ================================= */
+
+    window.loginGoogle = function () {
+
         startSecondLoading("Google Player");
+
     };
 
 
-    // FACEBOOK
-    window.loginFacebook = function() {
+    /* =================================
+       FACEBOOK LOGIN
+    ================================= */
+
+    window.loginFacebook = function () {
+
         startSecondLoading("Facebook Player");
+
     };
 
 
-    // GUEST
-    window.loginGuest = function() {
+    /* =================================
+       GUEST LOGIN
+    ================================= */
 
-        const id = Math.floor(
-            100000 + Math.random() * 900000
+    window.loginGuest = function () {
+
+
+        var guestID =
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+
+        var guestName =
+            "Guest_" + guestID;
+
+
+        document.getElementById(
+            "playerName"
+        ).innerHTML = guestName;
+
+
+        document.getElementById(
+            "playerId"
+        ).innerHTML =
+            "ID: " + guestID;
+
+
+        startSecondLoading(guestName);
+
+    };
+
+
+    /* =================================
+       SIGN UP
+    ================================= */
+
+    window.openSignup = function () {
+
+        alert(
+            "LEOBATTLE ACCOUNT\n\n" +
+            "Sign Up system will be connected next."
         );
 
-        document.getElementById("playerName").textContent =
-            "Guest_" + id;
-
-        document.getElementById("playerId").textContent =
-            "ID: " + id;
-
-        startSecondLoading("Guest_" + id);
     };
 
 
-    // SIGN UP
-    window.openSignup = function() {
-        alert("LeoBattle Sign Up will be connected next.");
-    };
+    /* =================================
+       SECOND LOADING
+    ================================= */
 
-
-    // SECOND LOADING
     function startSecondLoading(playerName) {
 
-        showPage("secondLoading");
 
-        let progress2 = 0;
+        showScreen("secondLoading");
 
-        const secondBar =
-            document.getElementById("secondBar");
 
-        const secondPercent =
-            document.getElementById("secondPercent");
+        var secondProgress = 0;
 
-        const secondStatus =
-            document.getElementById("secondStatus");
 
-        const timer = setInterval(function() {
+        var secondBar =
+            document.getElementById(
+                "secondBar"
+            );
 
-            progress2 += 2;
 
-            secondBar.style.width =
-                progress2 + "%";
+        var secondPercent =
+            document.getElementById(
+                "secondPercent"
+            );
 
-            secondPercent.textContent =
-                progress2 + "%";
 
-            if (progress2 < 30) {
-                secondStatus.textContent =
-                    "CONNECTING PLAYER...";
-            } else if (progress2 < 60) {
-                secondStatus.textContent =
-                    "LOADING PLAYER DATA...";
-            } else if (progress2 < 85) {
-                secondStatus.textContent =
-                    "PREPARING BATTLEFIELD...";
-            } else {
-                secondStatus.textContent =
-                    "ENTERING LEOBATTLE...";
-            }
+        var secondStatus =
+            document.getElementById(
+                "secondStatus"
+            );
 
-            if (progress2 >= 100) {
 
-                clearInterval(timer);
+        secondBar.style.width = "0%";
 
-                document.getElementById("welcomeName")
-                    .textContent =
-                    "WELCOME " + playerName.toUpperCase();
+        secondPercent.innerHTML = "0%";
 
-                setTimeout(function() {
-                    showPage("lobby");
-                }, 800);
-            }
 
-        }, 60);
+        var secondTimer =
+            setInterval(function () {
+
+
+                secondProgress += 2;
+
+
+                if (secondProgress > 100) {
+
+                    secondProgress = 100;
+
+                }
+
+
+                secondBar.style.width =
+                    secondProgress + "%";
+
+
+                secondPercent.innerHTML =
+                    secondProgress + "%";
+
+
+                if (secondProgress < 20) {
+
+                    secondStatus.innerHTML =
+                        "CONNECTING PLAYER...";
+
+                }
+
+                else if (secondProgress < 40) {
+
+                    secondStatus.innerHTML =
+                        "LOADING PLAYER DATA...";
+
+                }
+
+                else if (secondProgress < 60) {
+
+                    secondStatus.innerHTML =
+                        "LOADING CHARACTER...";
+
+                }
+
+                else if (secondProgress < 80) {
+
+                    secondStatus.innerHTML =
+                        "PREPARING BATTLEFIELD...";
+
+                }
+
+                else if (secondProgress < 100) {
+
+                    secondStatus.innerHTML =
+                        "ENTERING LOBBY...";
+
+                }
+
+                else {
+
+                    secondStatus.innerHTML =
+                        "LEOBATTLE READY";
+
+                }
+
+
+                if (secondProgress >= 100) {
+
+
+                    clearInterval(secondTimer);
+
+
+                    setTimeout(function () {
+
+                        showScreen("lobby");
+
+                    }, 900);
+
+                }
+
+
+            }, 60);
+
     }
 
 
-    // LOBBY
-    window.openFeature = function(feature) {
-        alert(feature + " — Coming Soon 🔥");
+    /* =================================
+       LOBBY MENU
+    ================================= */
+
+    window.openFeature = function (feature) {
+
+        alert(
+            feature +
+            "\n\nComing Soon 🔥"
+        );
+
     };
 
 
-    window.startBattle = function() {
-        alert("Battle system will be added next.");
+    /* =================================
+       START BATTLE
+    ================================= */
+
+    window.startBattle = function () {
+
+        alert(
+            "🪂 DROP INTO BATTLE\n\n" +
+            "Battle system coming next!"
+        );
+
     };
 
-});
-                          </script>
+
+})();
+
+</script>
 
 </body>
                 </html>
